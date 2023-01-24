@@ -4,55 +4,71 @@ using UnityEngine;
 
 public class CelestialInfo : MonoBehaviour
 {
-    public float mass = 1; // Unit: Earth
-    public float radius = 1; // Unit: IDK
-    public float rotationSpeed = 1; // Unit: day
-    public float initialSpeed = 10; // (Use for Orbital Speed) Unit: 1,000,000 km / day 
-    public float semiMajorAxis = 1; // Unit: 1,000,000 km
-    public GameObject orbitalPrimary = null;
-    public enum orbitType { none, perfect, elliptic };
-    [SerializeField] orbitType setToOrbit = orbitType.none; // Set type of orbit
-    public float axialTilt = 0f; // Relative to earth's elliptic plane
-    public float inclination = 0.0f; // Relative to earth's elliptic plane
+    
+    [Tooltip("1 Unit = 1 Earth Mass")]
+    public float _mass = 1;
+    [Tooltip("Units does not matter")]
+    public float _radius = 1;
+    [Tooltip("1 Unit = 1 day")]
+    public float _rotationSpeed = 1;
+    [Tooltip("1 Unit = 1,000,000 km / day")]
+    public float _initialSpeed = 10; 
+    [Tooltip("1 Unit = 1,000,000 km")]
+    public float _semiMajorAxis = 1;
+    public GameObject _orbitalPrimary = null;
+    
+    public enum OrbitType
+    {
+        none,
+        perfect,
+        elliptic
+    }
 
-    private float parentObjectScale = 1f;
-    private float defaultObjectScale = 1f;
+    [SerializeField]
+    private OrbitType _setToOrbit = OrbitType.none;
+    [Tooltip("Relative to earth's elliptic plane")]
+    public float _axialTilt = 0f;
+    [Tooltip("Relative to earth's elliptic plane")]
+    public float _inclination = 0.0f;
+
+    private float _parentObjectScale = 1f;
+    private float _defaultObjectScale = 1f;
 
     void Awake()
     {
         UpdateScales();
-        GetComponent<Rigidbody>().mass = mass;
-        transform.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
-        transform.eulerAngles = new Vector3(axialTilt, transform.eulerAngles.y, transform.eulerAngles.z);
+        GetComponent<Rigidbody>().mass = _mass;
+        transform.localScale = new Vector3(_radius * 2, _radius * 2, _radius * 2);
+        transform.eulerAngles = new Vector3(_axialTilt, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
     public void RotateOnAxis()
     {
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + rotationSpeed / 50, transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + _rotationSpeed / 50, transform.eulerAngles.z);
     }
 
-    public orbitType GetOrbitType()
+    public OrbitType GetOrbitType()
     {
-        return setToOrbit;
+        return _setToOrbit;
     }
 
     public bool DoScalesMatch()
     {
-        return parentObjectScale.Equals(transform.parent.localScale.x);
+        return _parentObjectScale.Equals(transform.parent.localScale.x);
     }
 
     public void UpdateScales()
     {
-        parentObjectScale = transform.parent.localScale.x;
+        _parentObjectScale = transform.parent.localScale.x;
     }
 
     public float GetPreviousScale()
     {
-        return parentObjectScale;
+        return _parentObjectScale;
     }
 
     public float GetDefaultScale()
     {
-        return defaultObjectScale;
+        return _defaultObjectScale;
     }
 }

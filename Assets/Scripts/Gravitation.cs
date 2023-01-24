@@ -8,18 +8,19 @@ public class Gravitation : MonoBehaviour
     private static readonly float EMass = (float)5.972 * Mathf.Pow(10, 24); // Unit: KG
     private static readonly float G = (float) (6.6743 * Mathf.Pow(10, -11)) / Mathf.Pow(10, 27) * EMass * Mathf.Pow(86400, 2); // (m^3 / kg s^2) to (Gm^3 / EM days^2)
 
-    [SerializeField] float timescale = 1f;
-    private float lastTimescale = 1f;
-    [SerializeField] float trailWidth = 1f;
+    [SerializeField] 
+    private float _timescale = 1f;
+    private float _lastTimescale = 1f;
+    [SerializeField] 
+    private float _trailWidth = 1f;
 
-    private GameObject[] celestials;
+    private GameObject[] _celestials;
 
-    // Start is called before the first frame update
     void Start()
     {
-        lastTimescale = timescale;
-        GetComponent<TrailRenderer>().widthMultiplier = trailWidth;
-        celestials = GameObject.FindGameObjectsWithTag("Celestial");
+        _lastTimescale = _timescale;
+        GetComponent<TrailRenderer>().widthMultiplier = _trailWidth;
+        _celestials = GameObject.FindGameObjectsWithTag("Celestial");
         Initialization();
         InitialVelocity();
     }
@@ -34,9 +35,9 @@ public class Gravitation : MonoBehaviour
 
     void Gravity()
     {
-        foreach (GameObject o1 in celestials)
+        foreach (GameObject o1 in _celestials)
         {
-            foreach (GameObject o2 in celestials)
+            foreach (GameObject o2 in _celestials)
             {
                 if (!o1.Equals(o2))
                 {
@@ -49,7 +50,7 @@ public class Gravitation : MonoBehaviour
                     // Mass2 mass multiplier canceled out by G multiplier
                     float force = (float) ((G * (o1Multiplier * mass1) * mass2) / Mathf.Pow(radius, 2));
 
-                    force *= timescale * timescale;
+                    force *= _timescale * _timescale;
 
                     o1.GetComponent<Rigidbody>().AddForce((o2.transform.position - o1.transform.position).normalized * force);
                 }
@@ -62,7 +63,7 @@ public class Gravitation : MonoBehaviour
     /// </summary>
     void Initialization()
     {
-        foreach (GameObject o in celestials)
+        foreach (GameObject o in _celestials)
         {
             o.AddComponent<TrailRenderer>();
             ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
@@ -72,15 +73,15 @@ public class Gravitation : MonoBehaviour
 
     void InitialVelocity()
     {
-        foreach (GameObject o1 in celestials)
+        foreach (GameObject o1 in _celestials)
         {
-            if (o1.GetComponent<CelestialInfo>().orbitalPrimary != null)
+            if (o1.GetComponent<CelestialInfo>()._orbitalPrimary != null)
             {
-                GameObject o2 = o1.GetComponent<CelestialInfo>().orbitalPrimary;
+                GameObject o2 = o1.GetComponent<CelestialInfo>()._orbitalPrimary;
                 SpeedCalculation(o1, o2);
             }
 
-            else foreach (GameObject o2 in celestials)
+            else foreach (GameObject o2 in _celestials)
             {
                 if (!o1.Equals(o2))
                 {
@@ -97,13 +98,13 @@ public class Gravitation : MonoBehaviour
     {
         float mass2 = o2.GetComponent<Rigidbody>().mass;
         float radius = Vector3.Distance(o1.transform.position, o2.transform.position);
-        float speed = o1.GetComponent<CelestialInfo>().initialSpeed;
+        float speed = o1.GetComponent<CelestialInfo>()._initialSpeed;
         float o2Multiplier = Mathf.Pow(o2.transform.parent.localScale.x / o2.GetComponent<CelestialInfo>().GetDefaultScale(), 3);
-        if (o1.GetComponent<CelestialInfo>().GetOrbitType() == CelestialInfo.orbitType.elliptic)
-            speed = Mathf.Sqrt(G * (o2Multiplier * mass2) * (2 / radius - 1 / o1.GetComponent<CelestialInfo>().semiMajorAxis));
-        else if (o1.GetComponent<CelestialInfo>().GetOrbitType() == CelestialInfo.orbitType.perfect)
+        if (o1.GetComponent<CelestialInfo>().GetOrbitType() == CelestialInfo.OrbitType.elliptic)
+            speed = Mathf.Sqrt(G * (o2Multiplier * mass2) * (2 / radius - 1 / o1.GetComponent<CelestialInfo>()._semiMajorAxis));
+        else if (o1.GetComponent<CelestialInfo>().GetOrbitType() == CelestialInfo.OrbitType.perfect)
             speed = Mathf.Sqrt(G * (o2Multiplier * mass2) / radius);
-        speed *= timescale;
+        speed *= _timescale;
 
         Debug.Log(string.Format("{0}, {1}, {2}", o1.name, o2.name, radius));
 
@@ -115,22 +116,22 @@ public class Gravitation : MonoBehaviour
     void UpdateCelestialsList() 
     {
         // Checking speed calculations
-        int size = celestials.Length;
-        celestials = GameObject.FindGameObjectsWithTag("Celestial"); // Temporary solution before adding method that calls this everytime adding new body
-        if (celestials.Length > size)
+        int size = _celestials.Length;
+        _celestials = GameObject.FindGameObjectsWithTag("Celestial"); // Temporary solution before adding method that calls this everytime adding new body
+        if (_celestials.Length > size)
         {
-            for (int i = size; i < celestials.Length; i++)
+            for (int i = size; i < _celestials.Length; i++)
             {
-                GameObject o1 = celestials[i];
+                GameObject o1 = _celestials[i];
                 o1.AddComponent<TrailRenderer>();
                 ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
                 ComponentUtility.PasteComponentValues(o1.GetComponent<TrailRenderer>());
-                if (o1.GetComponent<CelestialInfo>().orbitalPrimary != null)
+                if (o1.GetComponent<CelestialInfo>()._orbitalPrimary != null)
                 {
-                    GameObject o2 = o1.GetComponent<CelestialInfo>().orbitalPrimary;
+                    GameObject o2 = o1.GetComponent<CelestialInfo>()._orbitalPrimary;
                     SpeedCalculation(o1, o2);
                 }
-                else foreach (GameObject o2 in celestials)
+                else foreach (GameObject o2 in _celestials)
                 {
                     if (!o1.Equals(o2))
                     {
@@ -144,22 +145,22 @@ public class Gravitation : MonoBehaviour
     void UpdateTimescale()
     {
         // Updates the speed of each celestial object when timescale changes
-        if (timescale != lastTimescale)
+        if (_timescale != _lastTimescale)
         {
-            foreach (GameObject o in celestials)
+            foreach (GameObject o in _celestials)
             {
                 Rigidbody rb = o.GetComponent<Rigidbody>();
-                float multiplier = timescale / lastTimescale;
+                float multiplier = _timescale / _lastTimescale;
                 rb.velocity *= multiplier;
             }
         }
 
-        lastTimescale = timescale;
+        _lastTimescale = _timescale;
     }
 
     void ScaleCheck()
     {
-        foreach (GameObject o1 in celestials)
+        foreach (GameObject o1 in _celestials)
         {
             if (!o1.GetComponent<CelestialInfo>().DoScalesMatch())
             {
