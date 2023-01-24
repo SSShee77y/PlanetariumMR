@@ -10,11 +10,11 @@ public class CelestialInfo : MonoBehaviour
     [Tooltip("Units does not matter")]
     public float _radius = 1;
     [Tooltip("1 Unit = 1 day")]
-    public float _rotationSpeed = 1;
+    public float _rotationSpeed = 0;
     [Tooltip("1 Unit = 1,000,000 km / day")]
     public float _initialSpeed = 10; 
-    [Tooltip("1 Unit = 1,000,000 km")]
-    public float _semiMajorAxis = 1;
+    [Tooltip("1 Unit = 1,000,000 km | Basically Average Distance from Sun")]
+    public float _semiMajorAxis = 0;
     public GameObject _orbitalPrimary = null;
     
     public enum OrbitType

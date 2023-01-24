@@ -29,7 +29,7 @@ public class Gravitation : MonoBehaviour
     {
         UpdateCelestialsList();
         UpdateTimescale();
-        ScaleCheck();
+        // ScaleCheck();
         Gravity();
     }
 
@@ -43,12 +43,13 @@ public class Gravitation : MonoBehaviour
                 {
                     float mass1 = o1.GetComponent<Rigidbody>().mass;
                     float mass2 = o2.GetComponent<Rigidbody>().mass;
-                    float radius = Vector3.Distance(o1.transform.position, o2.transform.position);
+                    // float radius = Vector3.Distance(o1.transform.position, o2.transform.position);
+                    float radius = Vector3.Distance(o1.transform.localPosition, o2.transform.localPosition);
 
                     float o1Multiplier = Mathf.Pow(o1.transform.parent.localScale.x / o1.GetComponent<CelestialInfo>().GetDefaultScale(), 3);
 
                     // Mass2 mass multiplier canceled out by G multiplier
-                    float force = (float) ((G * (o1Multiplier * mass1) * mass2) / Mathf.Pow(radius, 2));
+                    float force = (float) ((G * (mass1) * mass2) / Mathf.Pow(radius, 2));
 
                     force *= _timescale * _timescale;
 
