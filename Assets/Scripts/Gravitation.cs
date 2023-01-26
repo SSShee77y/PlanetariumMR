@@ -9,13 +9,21 @@ public class Gravitation : MonoBehaviour
     [Tooltip("Instead of (m^3 / kg s^2), uses (Gm^3 / EarthMass days^2)")]
     private static readonly float G = (6.6743f * Mathf.Pow(10, -11)) / Mathf.Pow(10, 27) * EMass * Mathf.Pow(86400, 2);
 
+    [Header("Global Settings")]
+    private static bool _pauseAllSimulations;
+
+    [Header("Simulation Settings")]
     [SerializeField]
     private bool _useChildrenOnly;
     [SerializeField] [Range(0.4167f, 365f)] [Tooltip("1 real life second = 1 unit scale = 1 simulation day")]
     private float _timescale = 1f;
     private float _lastTimescale = 1f;
+
+    [Header("Trail Settings")]
     [SerializeField] 
     private float _trailWidth = 1f;
+    [SerializeField] [Tooltip("TrailTime basically signifies the length of a trail | 1 Unit = 1 day")]
+    private float _trailTime = 30f;
 
     private List<GameObject> _celestials = new List<GameObject>();
 
@@ -23,8 +31,46 @@ public class Gravitation : MonoBehaviour
     {
         _lastTimescale = _timescale;
         GetComponent<TrailRenderer>().widthMultiplier = _trailWidth;
+        GetComponent<TrailRenderer>().time = _trailTime / _timescale;
         Initialization();
-        InitialVelocity();
+    }
+
+    private void Update()
+    {   
+        if (_pauseAllSimulations)
+            Time.timeScale = 0f;
+        else
+            Time.timeScale = 1.0f;
+
+        CheckTrailRenderer();
+    }
+
+    [ContextMenu("ToggleGlobalSimulationPause")]
+    public void ToggleGlobalSimulationPause()
+    {
+        _pauseAllSimulations = !_pauseAllSimulations;
+    }
+
+    private void CheckTrailRenderer()
+    {
+        bool needsUpdate = false;
+
+        if (_trailWidth != GetComponent<TrailRenderer>().widthMultiplier)
+        {
+            GetComponent<TrailRenderer>().widthMultiplier = _trailWidth;
+            needsUpdate = true;
+        }
+
+        if (_trailTime / _timescale != GetComponent<TrailRenderer>().time)
+        {
+            GetComponent<TrailRenderer>().time = _trailTime / _timescale;
+            needsUpdate = true;
+        }
+
+        if (needsUpdate)
+        {
+            AddTrails();
+        }
     }
 
     private void FixedUpdate() // Called 50 times per second
@@ -76,10 +122,16 @@ public class Gravitation : MonoBehaviour
         {
             _celestials.AddRange(GameObject.FindGameObjectsWithTag("Celestial"));
         }
+        AddTrails();
+        InitialVelocity();
+    }
 
+    void AddTrails()
+    {
         foreach (GameObject body in _celestials)
         {
-            body.AddComponent<TrailRenderer>();
+            if (body.GetComponent<TrailRenderer>() == null)
+                body.AddComponent<TrailRenderer>();
             ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
             ComponentUtility.PasteComponentValues(body.GetComponent<TrailRenderer>());
         }
