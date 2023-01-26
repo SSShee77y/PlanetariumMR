@@ -5,19 +5,19 @@ public class CelestialInfo : MonoBehaviour
 {
     
     [FormerlySerializedAs("_mass")][Tooltip("1 Unit = 1 Earth Mass")]
-    public float mass = 1;
+    public float mass = 1f;
 
     [FormerlySerializedAs("_radius")][Tooltip("Visual purposes only")]
-    public float radius = 1;
+    public float radius = 1f;
 
     [FormerlySerializedAs("_rotationSpeed")][Tooltip("1 Unit = 1 day")]
-    public float rotationSpeed = 0;
+    public float rotationSpeed = 0f;
     
     [FormerlySerializedAs("_initialSpeed")][Tooltip("1 Unit = 1,000,000 km / day")]
-    public float initialSpeed = 10;
+    public float initialSpeed = 0f;
 
     [FormerlySerializedAs("_semiMajorAxis")][Tooltip("1 Unit = 1,000,000 km | Basically Average Distance from Sun")]
-    public float semiMajorAxis = 0;
+    public float semiMajorAxis = 0f;
 
     [FormerlySerializedAs("_orbitalPrimary")][Tooltip("Main planet it orbits (useful if using specific orbit type")]
     public GameObject orbitalPrimary = null;
