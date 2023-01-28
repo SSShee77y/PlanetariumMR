@@ -73,7 +73,7 @@ public class Gravitation : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() // Called 50 times per second
+    private void FixedUpdate() // Called 50 times per second (Not affected by Time.timescale)
     {
         UpdateCelestialsList();
         UpdateTimescale();
@@ -134,6 +134,7 @@ public class Gravitation : MonoBehaviour
                 body.AddComponent<TrailRenderer>();
             ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
             ComponentUtility.PasteComponentValues(body.GetComponent<TrailRenderer>());
+            body.GetComponent<TrailRenderer>().enabled = true;
         }
     }
 

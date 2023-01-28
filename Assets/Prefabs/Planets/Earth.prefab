@@ -125,12 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eed81d346d676940a62be889043091c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mass: 1
-  _radius: 3.189
-  _rotationSpeed: 1.0027378
-  _initialSpeed: 10
-  _semiMajorAxis: 149.59789
-  _orbitalPrimary: {fileID: 0}
-  _setToOrbit: 2
-  _axialTilt: 23.44
-  _inclination: 0
+  mass: 1
+  radius: 3.189
+  rotationSpeed: 1.0027074
+  initialSpeed: 0
+  semiMajorAxis: 149.5979
+  orbitalPrimary: {fileID: 0}
+  setToOrbit: 2
+  axialTilt: 23.44
+  inclination: 0

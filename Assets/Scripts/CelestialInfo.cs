@@ -4,22 +4,22 @@ using UnityEngine.Serialization;
 public class CelestialInfo : MonoBehaviour
 {
     
-    [FormerlySerializedAs("_mass")][Tooltip("1 Unit = 1 Earth Mass")]
+    [Tooltip("1 Unit = 1 Earth Mass")]
     public float mass = 1f;
 
-    [FormerlySerializedAs("_radius")][Tooltip("Visual purposes only")]
+    [Tooltip("Visual purposes only so far | 1 Unit = 1,000,000 km")]
     public float radius = 1f;
 
-    [FormerlySerializedAs("_rotationSpeed")][Tooltip("1 Unit = 1 day")]
+    [Tooltip("1 Unit = 1 day")]
     public float rotationSpeed = 0f;
     
-    [FormerlySerializedAs("_initialSpeed")][Tooltip("1 Unit = 1,000,000 km / day")]
+    [Tooltip("1 Unit = 1,000,000 km / day")]
     public float initialSpeed = 0f;
 
-    [FormerlySerializedAs("_semiMajorAxis")][Tooltip("1 Unit = 1,000,000 km | Basically Average Distance from Sun")]
+    [Tooltip("1 Unit = 1,000,000 km | Basically Average Distance from Sun")]
     public float semiMajorAxis = 0f;
 
-    [FormerlySerializedAs("_orbitalPrimary")][Tooltip("Main planet it orbits (useful if using specific orbit type")]
+    [Tooltip("Main planet it orbits (useful if using specific orbit type")]
     public GameObject orbitalPrimary = null;
     
     public enum OrbitType
@@ -29,13 +29,12 @@ public class CelestialInfo : MonoBehaviour
         Elliptic
     }
 
-    [FormerlySerializedAs("_setToOrbit")]
     public OrbitType setToOrbit = OrbitType.None;
 
-    [Tooltip("Relative to earth's elliptic plane")] [FormerlySerializedAs("_axialTilt")]
+    [Tooltip("Relative to earth's elliptic plane")]
     public float axialTilt = 0f;
 
-    [Tooltip("Relative to earth's elliptic plane")] [FormerlySerializedAs("_inclination")]
+    [Tooltip("Relative to earth's elliptic plane")]
     public float inclination = 0.0f;
 
     private float _parentObjectScale = 1f;
