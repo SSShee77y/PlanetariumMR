@@ -15,7 +15,7 @@ public class Gravitation : MonoBehaviour
     [Header("Simulation Settings")]
     [SerializeField]
     private bool _useChildrenOnly;
-    [SerializeField] [Range(0.4167f, 365f)] [Tooltip("1 real life second = 1 unit scale = 1 simulation day")]
+    [SerializeField] [Tooltip("1 real life second = 1 unit scale = 1 simulation day")]
     private float _timescale = 1f;
     private float _lastTimescale = 1f;
 
