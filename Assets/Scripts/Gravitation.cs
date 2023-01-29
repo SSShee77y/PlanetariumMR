@@ -111,19 +111,24 @@ public class Gravitation : MonoBehaviour
     /// </summary>
     void Initialization()
     {   
+        AddCelestialsToList(_celestials);
+        AddTrails();
+        InitialVelocity();
+    }
+
+    void AddCelestialsToList(List<GameObject> list)
+    {
         if (_useChildrenOnly)
         {
             foreach (CelestialInfo celestialInfo in GetComponentsInChildren<CelestialInfo>())
             {
-                _celestials.Add(celestialInfo.gameObject);
+                list.Add(celestialInfo.gameObject);
             }
         }   
         else
         {
-            _celestials.AddRange(GameObject.FindGameObjectsWithTag("Celestial"));
+            list.AddRange(GameObject.FindGameObjectsWithTag("Celestial"));
         }
-        AddTrails();
-        InitialVelocity();
     }
 
     void AddTrails()
@@ -184,6 +189,7 @@ public class Gravitation : MonoBehaviour
     {
         int size = _celestials.Count;
         List<GameObject> listToAdd = new List<GameObject>();
+        AddCelestialsToList(listToAdd);
         foreach (GameObject body in _celestials)
         {
             listToAdd.Remove(body);
@@ -191,6 +197,7 @@ public class Gravitation : MonoBehaviour
         _celestials.AddRange(listToAdd);
         if (_celestials.Count > size)
         {
+            AddTrails();
             for (int i = size; i < _celestials.Count; i++)
             {
                 GameObject bodyOne = _celestials[i];

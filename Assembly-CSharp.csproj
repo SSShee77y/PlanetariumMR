@@ -38,6 +38,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CelestialInfo.cs" />
      <Compile Include="Assets\Scripts\Gravitation.cs" />
+     <Compile Include="Assets\Scripts\Collector.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\MRTK\Shaders\Text3DShader.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
