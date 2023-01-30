@@ -42,10 +42,14 @@ public class CelestialInfo : MonoBehaviour
 
     void Awake()
     {
-        UpdateScales();
         GetComponent<Rigidbody>().mass = mass;
         transform.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
         transform.eulerAngles = new Vector3(axialTilt, transform.eulerAngles.y, transform.eulerAngles.z);
+    }
+
+    void LateUpdate()
+    {
+        _parentObjectScale = transform.parent.localScale.x;
     }
 
     public void RotateOnAxis()
@@ -58,17 +62,12 @@ public class CelestialInfo : MonoBehaviour
         return setToOrbit;
     }
 
-    public bool DoScalesMatch()
+    public bool DidParentScaleChange()
     {
-        return _parentObjectScale.Equals(transform.parent.localScale.x);
+        return !(_parentObjectScale.Equals(transform.parent.localScale.x));
     }
 
-    public void UpdateScales()
-    {
-        _parentObjectScale = transform.parent.localScale.x;
-    }
-
-    public float GetPreviousScale()
+    public float GetPreviousParentScale()
     {
         return _parentObjectScale;
     }

@@ -4,6 +4,10 @@ using UnityEngine;
 public class Collector : MonoBehaviour
 {
     [SerializeField]
+    private Transform simulationSystem;
+
+    [Header("Extra Flags")]
+    [SerializeField]
     private bool disableChildrenOnStart;
     [SerializeField]
     private bool useExclusionList;
@@ -16,16 +20,18 @@ public class Collector : MonoBehaviour
 
     private void Start()
     {
-        celesials = GetComponentsInChildren<CelestialInfo>();
+        if (simulationSystem == null)
+            simulationSystem = transform;
+        celesials = simulationSystem.gameObject.GetComponentsInChildren<CelestialInfo>();
         if (disableChildrenOnStart)
             DisableChildren();
     }
 
     private void DisableChildren()
     {
-        foreach (Transform child in transform.GetComponentsInChildren<Transform>())
+        foreach (Transform child in simulationSystem.GetComponentsInChildren<Transform>())
         {
-            if (child == transform)
+            if (child == simulationSystem)
                 continue;
             if (useExclusionList)
             {
@@ -58,9 +64,9 @@ public class Collector : MonoBehaviour
 
     public bool IsGameObjectAChild(GameObject gameObject)
     {
-        foreach (Transform child in transform.GetComponentsInChildren<Transform>())
+        foreach (Transform child in simulationSystem.GetComponentsInChildren<Transform>())
         {
-            if (child == transform)
+            if (child == simulationSystem)
                 continue;
             if (child.gameObject == gameObject)
                 return true;

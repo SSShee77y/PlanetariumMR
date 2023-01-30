@@ -32,7 +32,10 @@ public class Gravitation : MonoBehaviour
         _lastTimescale = _timescale;
         GetComponent<TrailRenderer>().widthMultiplier = _trailWidth;
         GetComponent<TrailRenderer>().time = _trailTime / _timescale;
-        Initialization();
+
+        AddCelestialsToList(_celestials);
+        AddTrailsToAll();
+        CalculateSpeedOfAll();
     }
 
     private void Update()
@@ -69,7 +72,7 @@ public class Gravitation : MonoBehaviour
 
         if (needsUpdate)
         {
-            AddTrails();
+            AddTrailsToAll();
         }
     }
 
@@ -78,10 +81,10 @@ public class Gravitation : MonoBehaviour
         UpdateCelestialsList();
         UpdateTimescale();
         ScaleCheck();
-        Gravity();
+        ApplyGravity();
     }
 
-    void Gravity()
+    void ApplyGravity()
     {
         foreach (GameObject bodyOne in _celestials)
         {
@@ -106,16 +109,6 @@ public class Gravitation : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Adds each wanted Celestial object to the list and initializes each Celestial object with base componenets from the object controller that has the Gravitation script.
-    /// </summary>
-    void Initialization()
-    {   
-        AddCelestialsToList(_celestials);
-        AddTrails();
-        InitialVelocity();
-    }
-
     void AddCelestialsToList(List<GameObject> list)
     {
         if (_useChildrenOnly)
@@ -131,41 +124,45 @@ public class Gravitation : MonoBehaviour
         }
     }
 
-    void AddTrails()
+    void AddTrailsToAll()
     {
         foreach (GameObject body in _celestials)
         {
-            if (body.GetComponent<TrailRenderer>() == null)
-                body.AddComponent<TrailRenderer>();
-            ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
-            ComponentUtility.PasteComponentValues(body.GetComponent<TrailRenderer>());
-            body.GetComponent<TrailRenderer>().enabled = true;
+            AddTrailToBody(body);
         }
     }
 
-    void InitialVelocity()
+    void AddTrailToBody(GameObject body)
+    {
+        if (body.GetComponent<TrailRenderer>() == null)
+            body.AddComponent<TrailRenderer>();
+        ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
+        ComponentUtility.PasteComponentValues(body.GetComponent<TrailRenderer>());
+        body.GetComponent<TrailRenderer>().enabled = true;
+    }
+
+    void CalculateSpeedOfAll()
     {
         foreach (GameObject bodyOne in _celestials)
         {
-            if (bodyOne.GetComponent<CelestialInfo>().orbitalPrimary != null)
-            {
-                GameObject bodyTwo = bodyOne.GetComponent<CelestialInfo>().orbitalPrimary;
-                SpeedCalculation(bodyOne, bodyTwo);
-            }
-
-            else foreach (GameObject bodyTwo in _celestials)
-            {
-                if (!bodyOne.Equals(bodyTwo))
-                {
-                    SpeedCalculation(bodyOne, bodyTwo);
-                }
-            }
+            CalculateSpeedOfBody(bodyOne);
         }
     }
 
-    /// <summary>
-    /// Method called to help the InitialVelocity method to calculate the speed of the object for orbit.
-    /// </summary>
+    void CalculateSpeedOfBody(GameObject bodyOne)
+    {
+        if (bodyOne.GetComponent<CelestialInfo>().orbitalPrimary != null)
+        {
+            GameObject bodyTwo = bodyOne.GetComponent<CelestialInfo>().orbitalPrimary;
+            SpeedCalculation(bodyOne, bodyTwo);
+        }
+        else foreach (GameObject bodyTwo in _celestials)
+        {
+            if (!bodyOne.Equals(bodyTwo))
+                SpeedCalculation(bodyOne, bodyTwo);
+        }
+    }
+
     void SpeedCalculation(GameObject bodyToCalculate, GameObject bodyAffecting)
     {
         float mass2 = bodyAffecting.GetComponent<Rigidbody>().mass;
@@ -190,32 +187,13 @@ public class Gravitation : MonoBehaviour
         int size = _celestials.Count;
         List<GameObject> listToAdd = new List<GameObject>();
         AddCelestialsToList(listToAdd);
-        foreach (GameObject body in _celestials)
+        foreach (GameObject body in listToAdd)
         {
-            listToAdd.Remove(body);
-        }
-        _celestials.AddRange(listToAdd);
-        if (_celestials.Count > size)
-        {
-            AddTrails();
-            for (int i = size; i < _celestials.Count; i++)
+            if (!_celestials.Contains(body))
             {
-                GameObject bodyOne = _celestials[i];
-                bodyOne.AddComponent<TrailRenderer>();
-                ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
-                ComponentUtility.PasteComponentValues(bodyOne.GetComponent<TrailRenderer>());
-                if (bodyOne.GetComponent<CelestialInfo>().orbitalPrimary != null)
-                {
-                    GameObject bodyTwo = bodyOne.GetComponent<CelestialInfo>().orbitalPrimary;
-                    SpeedCalculation(bodyOne, bodyTwo);
-                }
-                else foreach (GameObject bodyTwo in _celestials)
-                {
-                    if (!bodyOne.Equals(bodyTwo))
-                    {
-                        SpeedCalculation(bodyOne, bodyTwo);
-                    }
-                }
+                _celestials.Add(body);
+                AddTrailToBody(body);
+                CalculateSpeedOfBody(body);
             }
         }
     }
@@ -259,18 +237,17 @@ public class Gravitation : MonoBehaviour
     {
         foreach (GameObject body in _celestials)
         {
-            if (!body.GetComponent<CelestialInfo>().DoScalesMatch())
+            if (body.GetComponent<CelestialInfo>().DidParentScaleChange())
             {
-                RecalculateSpeed(body);
+                ScaleSpeedOfBody(body);
             }
         }
     }
 
-    void RecalculateSpeed(GameObject body)
+    void ScaleSpeedOfBody(GameObject body)
     {
         Rigidbody rb = body.GetComponent<Rigidbody>();
-        rb.velocity *= Mathf.Sqrt(body.transform.parent.localScale.x / body.GetComponent<CelestialInfo>().GetPreviousScale());
-        body.GetComponent<CelestialInfo>().UpdateScales();
+        rb.velocity *= Mathf.Sqrt(body.transform.parent.localScale.x / body.GetComponent<CelestialInfo>().GetPreviousParentScale());
     }
 
 }
