@@ -37,19 +37,14 @@ public class CelestialInfo : MonoBehaviour
     [Tooltip("Relative to earth's elliptic plane")]
     public float inclination = 0.0f;
 
-    private float _parentObjectScale = 1f;
-    private float _defaultObjectScale = 1f;
+    private float previousParentScale = 1f;
 
     void Awake()
     {
+        UpdateParentScale();
         GetComponent<Rigidbody>().mass = mass;
         transform.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
         transform.eulerAngles = new Vector3(axialTilt, transform.eulerAngles.y, transform.eulerAngles.z);
-    }
-
-    void LateUpdate()
-    {
-        _parentObjectScale = transform.parent.localScale.x;
     }
 
     public void RotateOnAxis()
@@ -64,16 +59,21 @@ public class CelestialInfo : MonoBehaviour
 
     public bool DidParentScaleChange()
     {
-        return !(_parentObjectScale.Equals(transform.parent.localScale.x));
+        return !(previousParentScale.Equals(transform.parent.localScale.x));
     }
 
     public float GetPreviousParentScale()
     {
-        return _parentObjectScale;
+        return previousParentScale;
     }
 
     public float GetDefaultScale()
     {
-        return _defaultObjectScale;
+        return 1f;
+    }
+
+    public void UpdateParentScale()
+    {
+        previousParentScale = transform.parent.localScale.x;
     }
 }

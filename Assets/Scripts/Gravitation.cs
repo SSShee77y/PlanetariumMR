@@ -39,7 +39,7 @@ public class Gravitation : MonoBehaviour
     }
 
     private void Update()
-    {   
+    {    
         if (_pauseAllSimulations)
             Time.timeScale = 0f;
         else
@@ -78,6 +78,7 @@ public class Gravitation : MonoBehaviour
 
     private void FixedUpdate() // Called 50 times per second (Not affected by Time.timescale)
     {
+        SetSystemScaleToBox();
         UpdateCelestialsList();
         UpdateTimescale();
         ScaleCheck();
@@ -234,7 +235,7 @@ public class Gravitation : MonoBehaviour
     }
 
     void ScaleCheck()
-    {
+    {   
         foreach (GameObject body in _celestials)
         {
             if (body.GetComponent<CelestialInfo>().DidParentScaleChange())
@@ -247,7 +248,14 @@ public class Gravitation : MonoBehaviour
     void ScaleSpeedOfBody(GameObject body)
     {
         Rigidbody rb = body.GetComponent<Rigidbody>();
-        rb.velocity *= Mathf.Sqrt(body.transform.parent.localScale.x / body.GetComponent<CelestialInfo>().GetPreviousParentScale());
+        rb.velocity *= body.transform.parent.localScale.x / body.GetComponent<CelestialInfo>().GetPreviousParentScale();
+        body.GetComponent<CelestialInfo>().UpdateParentScale();
+    }
+
+    void SetSystemScaleToBox()
+    {
+        if (GetComponent<ScaleSystemToBox>() != null)
+            GetComponent<ScaleSystemToBox>().SetNewScale();
     }
 
 }
