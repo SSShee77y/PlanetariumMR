@@ -15,6 +15,8 @@ public class Gravitation : MonoBehaviour
     [Header("Simulation Settings")]
     [SerializeField]
     private bool _useChildrenOnly;
+    [SerializeField] [Tooltip("Useful for stationary simulations with moving parts")]
+    private bool _useCenterOfMassCentering;
     [SerializeField] [Tooltip("1 real life second = 1 unit scale = 1 simulation day")]
     private float _timescale = 1f;
     private float _lastTimescale = 1f;
@@ -26,6 +28,12 @@ public class Gravitation : MonoBehaviour
     private float _trailTime = 30f;
 
     private List<GameObject> _celestials = new List<GameObject>();
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(GetCenterOfMass(), 0.04f);
+    }
 
     void Start()
     {
@@ -83,6 +91,32 @@ public class Gravitation : MonoBehaviour
         UpdateTimescale();
         ScaleCheck();
         ApplyGravity();
+        if (_useCenterOfMassCentering)
+            MoveObjectsToCenterOfSystem();
+    }
+
+    void MoveObjectsToCenterOfSystem()
+    {
+        Vector3 centerOfMass = GetCenterOfMass();
+        Vector3 displacement = transform.position - centerOfMass;
+        foreach (GameObject body in _celestials)
+        {
+            body.transform.position = body.transform.position + displacement;
+        }
+    }
+
+    Vector3 GetCenterOfMass()
+    {
+        Vector3 totalDistance = new Vector3();
+        float totalMass = 0f;
+        foreach (GameObject body in _celestials)
+        {
+            float bodyMass = body.GetComponent<Rigidbody>().mass;
+            totalMass += bodyMass;
+            totalDistance += (bodyMass * body.transform.position);
+        }
+
+        return (totalDistance / totalMass);
     }
 
     void ApplyGravity()
