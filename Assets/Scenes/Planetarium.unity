@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0008382967, g: 0.0018833573, b: 0.0040418636, a: 1}
+  m_IndirectSpecularColor: {r: 0.0017574569, g: 0.003948395, b: 0.008473489, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -336,39 +336,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _useChildrenOnly: 1
+  _useCenterOfMassCentering: 0
   _timescale: 1
   _trailWidth: 0.01
   _trailTime: 30
---- !u!1 &166018435
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 166018436}
-  m_Layer: 0
-  m_Name: CelestialInfo change values in editor (editor scripting)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &166018436
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166018435}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1135016380}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &347110784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 333335844240162210, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
@@ -651,37 +622,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3366440413691811310, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
   m_PrefabInstance: {fileID: 3366440412594854845}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1135016379
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1135016380}
-  m_Layer: 0
-  m_Name: TO-DO
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1135016380
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135016379}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.710949, y: -1.0318623, z: -1.3703063}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 166018436}
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1276868637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _useChildrenOnly: 1
+  _useCenterOfMassCentering: 0
   _timescale: 3650
   _trailWidth: 0.01
   _trailTime: 3650
@@ -1423,6 +1364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _useChildrenOnly: 1
+  _useCenterOfMassCentering: 0
   _timescale: 1
   _trailWidth: 0.01
   _trailTime: 30
@@ -1793,6 +1735,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5952674488038668963, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_Mass
+      value: 332468.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674488845258999, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9759358
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674488845258999, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.21805808
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674488845258999, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674488845258999, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674488845259002, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_Mass
+      value: 0.1075
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674488866156109, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_Mass
+      value: 0.0553
+      objectReference: {fileID: 0}
     - target: {fileID: 5952674489027001224, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
       propertyPath: m_Name
       value: Sun-Inner Planet System
@@ -1848,6 +1818,42 @@ PrefabInstance:
     - target: {fileID: 5952674489027001231, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
       propertyPath: autoConstraintSelection
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674489659897754, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.97915196
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674489659897754, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.2031291
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674489659897754, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674489659897754, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674489840878864, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.023559732
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674489840878864, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.9997225
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674489840878864, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00000004266943
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674489840878864, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.00000004266943
+      objectReference: {fileID: 0}
+    - target: {fileID: 5952674489840878871, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
+      propertyPath: m_Mass
+      value: 0.8153
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991c3af0377445f44ab29e6f666da8ab, type: 3}
@@ -1971,6 +1977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _useChildrenOnly: 1
+  _useCenterOfMassCentering: 0
   _timescale: 30
   _trailWidth: 0.01
   _trailTime: 30
