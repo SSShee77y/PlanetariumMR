@@ -5,6 +5,10 @@ using UnityEngine;
 public class ScaleSystemToBox : MonoBehaviour
 {
     [SerializeField]
+    private bool isEnabled;
+    [SerializeField]
+    private bool useAverageDistanceInstead;
+    [SerializeField]
     private float maxDiameter = 1f;
     [SerializeField]
     private Vector3 defaultScale = new Vector3(1f, 1f, 1f);
@@ -12,6 +16,7 @@ public class ScaleSystemToBox : MonoBehaviour
     [ContextMenu("SetNewScale")]
     public void SetNewScale()
     {
+        if (!isEnabled) return;
         transform.localScale = defaultScale * (maxDiameter / 2f / GetFarthestDistance());
     }
 
@@ -24,6 +29,8 @@ public class ScaleSystemToBox : MonoBehaviour
                 continue;
 
             float transformDistance = Vector3.Distance(new Vector3(0, 0, 0), child.transform.localPosition);
+            if (useAverageDistanceInstead)
+                transformDistance = child.GetComponent<CelestialInfo>().semiMajorAxis;
             transformDistance += (child.transform.localScale.x / 2f);
             if (transformDistance > farthestDistance)
                 farthestDistance = transformDistance;

@@ -93,6 +93,7 @@ public class Gravitation : MonoBehaviour
         ApplyGravity();
         if (_useCenterOfMassCentering)
             MoveObjectsToCenterOfSystem();
+        RotateCelestialsOnAxis();
     }
 
     void MoveObjectsToCenterOfSystem()
@@ -117,6 +118,14 @@ public class Gravitation : MonoBehaviour
         }
 
         return (totalDistance / totalMass);
+    }
+
+    void RotateCelestialsOnAxis()
+    {
+        foreach (GameObject body in _celestials)
+        {
+            body.GetComponent<CelestialInfo>().RotateOnAxis(_timescale);
+        }
     }
 
     void ApplyGravity()

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
+[ExecuteInEditMode]
 public class CelestialInfo : MonoBehaviour
 {
     
@@ -39,17 +40,21 @@ public class CelestialInfo : MonoBehaviour
 
     private float previousParentScale = 1f;
 
-    void Awake()
+    private void Awake()
     {
         UpdateParentScale();
-        GetComponent<Rigidbody>().mass = mass;
-        transform.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
-        transform.eulerAngles = new Vector3(axialTilt, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
-    public void RotateOnAxis()
+    private void Update()
     {
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y + rotationSpeed / 50, transform.eulerAngles.z);
+        GetComponent<Rigidbody>().mass = mass;
+        transform.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
+        transform.localEulerAngles = new Vector3(axialTilt, transform.eulerAngles.y, transform.eulerAngles.z);
+    }
+
+    public void RotateOnAxis(float timescale)
+    {
+        transform.localEulerAngles -= new Vector3(0, rotationSpeed * 360f * Time.deltaTime * timescale, 0);
     }
 
     public OrbitType GetOrbitType()
