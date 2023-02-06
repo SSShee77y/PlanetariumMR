@@ -66,6 +66,8 @@ public class Collector : MonoBehaviour
     {
         foreach (Transform child in simulationSystem.GetComponentsInChildren<Transform>())
         {
+            if (child.GetComponent<CelestialInfo>() == null)
+                continue;
             if (child == simulationSystem)
                 continue;
             if (child.gameObject == gameObject)

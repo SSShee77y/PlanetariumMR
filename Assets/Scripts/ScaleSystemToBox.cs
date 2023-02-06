@@ -25,6 +25,8 @@ public class ScaleSystemToBox : MonoBehaviour
         float farthestDistance = 0f;
         foreach (Transform child in transform.GetComponentsInChildren<Transform>())
         {
+            if (child.GetComponent<CelestialInfo>() == null)
+                continue;
             if (child == transform)
                 continue;
 
