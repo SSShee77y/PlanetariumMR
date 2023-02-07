@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 26db8cf7a9592134f98b4a161acaa970, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 0777ff66b6070334ebc760a7eab57caa, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0017574569, g: 0.003948395, b: 0.008473489, a: 1}
+  m_IndirectSpecularColor: {r: 0.97363126, g: 0.97363126, b: 0.97363126, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -422,9 +422,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _useChildrenOnly: 1
-  _useCenterOfMassCentering: 0
+  _useCenterOfMassCentering: 1
   _timescale: 1
-  _trailWidth: 0.01
+  _trailWidth: 0.001
   _trailTime: 30
 --- !u!114 &333272635
 MonoBehaviour:
@@ -492,7 +492,7 @@ Transform:
   m_GameObject: {fileID: 333272632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 1382223700}
   - {fileID: 446591665}
@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 338463936}
   - component: {fileID: 338463938}
   - component: {fileID: 338463939}
+  - component: {fileID: 338463940}
   - component: {fileID: 338463937}
   m_Layer: 0
   m_Name: Solar System
@@ -677,6 +678,18 @@ MonoBehaviour:
   useAverageDistanceInstead: 1
   maxDiameter: 1
   defaultScale: {x: 1, y: 1, z: 1}
+--- !u!114 &338463940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338463935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c24a6839f90cd4bbac7304770174f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &399656257
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,13 +728,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 333272637}
     m_Modifications:
+    - target: {fileID: 3366440413691811304, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
+      propertyPath: orbitalPrimary
+      value: 
+      objectReference: {fileID: 1382223701}
+    - target: {fileID: 3366440413691811307, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
+      propertyPath: m_Mass
+      value: 0.0002545
+      objectReference: {fileID: 0}
     - target: {fileID: 3366440413691811310, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3366440413691811310, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.017536
+      value: 0.019587
       objectReference: {fileID: 0}
     - target: {fileID: 3366440413691811310, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
       propertyPath: m_LocalPosition.y
@@ -737,15 +758,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3366440413691811310, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3366440413691811310, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3366440413691811310, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3366440413691811310, guid: d783425e30819bf41bc300c3edcae8d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1525,6 +1546,10 @@ PrefabInstance:
       value: Pluto
       objectReference: {fileID: 0}
     - target: {fileID: 333335844240162142, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
+      propertyPath: m_Mass
+      value: 0.002177
+      objectReference: {fileID: 0}
+    - target: {fileID: 333335844240162142, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
       propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
@@ -1546,19 +1571,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 333335844240162210, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.5030199
       objectReference: {fileID: 0}
     - target: {fileID: 333335844240162210, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.8642748
       objectReference: {fileID: 0}
     - target: {fileID: 333335844240162210, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.000000015790953
       objectReference: {fileID: 0}
     - target: {fileID: 333335844240162210, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.000000015790953
       objectReference: {fileID: 0}
     - target: {fileID: 333335844240162210, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1577,6 +1602,11 @@ PrefabInstance:
 --- !u!4 &1382223700 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 333335844240162210, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
+  m_PrefabInstance: {fileID: 1382223699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1382223701 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 333335844240162139, guid: 1c0810068cbed014e8e246d364ceec13, type: 3}
   m_PrefabInstance: {fileID: 1382223699}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1438943044
@@ -1622,7 +1652,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.89580166, b: 0.740566, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
