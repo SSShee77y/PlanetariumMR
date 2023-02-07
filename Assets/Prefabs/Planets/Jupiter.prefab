@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 45fa2e75574833a488bc0199b3685c31, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,6 +129,8 @@ MonoBehaviour:
   radius: 7.1492
   rotationSpeed: 2.4181457
   initialSpeed: 0
+  apocenter: 0
+  pericenter: 0
   semiMajorAxis: 778.412
   orbitalPrimary: {fileID: 0}
   setToOrbit: 2

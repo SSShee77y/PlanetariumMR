@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 674660398925308099}
   - component: {fileID: 674660398925308100}
   m_Layer: 0
-  m_Name: Sun
+  m_Name: Sol
   m_TagString: Celestial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 55449e8687c475740a116811ac868ba9, type: 2}
+  - {fileID: 2100000, guid: 75a2b2b0e448f324baa971dac0d07301, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,8 +129,10 @@ MonoBehaviour:
   radius: 17.3877
   rotationSpeed: 0.039401103
   initialSpeed: 0
+  apocenter: 0
+  pericenter: 0
   semiMajorAxis: 0
   orbitalPrimary: {fileID: 0}
   setToOrbit: 0
-  axialTilt: 0
+  axialTilt: 7.25
   inclination: 0

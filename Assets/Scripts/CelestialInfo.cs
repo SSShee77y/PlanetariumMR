@@ -17,7 +17,13 @@ public class CelestialInfo : MonoBehaviour
     [Tooltip("1 Unit = 1,000,000 km / day")]
     public float initialSpeed = 0f;
 
-    [Tooltip("1 Unit = 1,000,000 km | Basically Average Distance from Sun")]
+    [Tooltip("1 Unit = 1,000,000 km | The longest distance from its orbital primary")]
+    public float apocenter = 0f;
+
+    [Tooltip("1 Unit = 1,000,000 km | The shortest distance from its orbital primary")]
+    public float pericenter = 0f;
+
+    [Tooltip("1 Unit = 1,000,000 km | Essentially the average distance from its orbital primary")]
     public float semiMajorAxis = 0f;
 
     [Tooltip("Main planet it orbits (useful if using specific orbit type")]
