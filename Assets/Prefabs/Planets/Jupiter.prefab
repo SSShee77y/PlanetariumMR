@@ -129,8 +129,8 @@ MonoBehaviour:
   radius: 7.1492
   rotationSpeed: 2.4181457
   initialSpeed: 0
-  apocenter: 0
-  pericenter: 0
+  apocenter: 816.4
+  pericenter: 740.6
   semiMajorAxis: 778.412
   orbitalPrimary: {fileID: 0}
   setToOrbit: 2
