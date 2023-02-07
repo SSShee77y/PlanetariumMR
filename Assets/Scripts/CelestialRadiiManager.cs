@@ -28,20 +28,10 @@ public class CelestialRadiiManager : MonoBehaviour
             radii.realisticRadius = Mathf.Clamp(radii.realisticRadius, 0f, float.MaxValue);
             radii.exaggeratedRadius = Mathf.Clamp(radii.exaggeratedRadius, 0f, float.MaxValue);
 
-            if (radii.realisticRadius != 0f && radii.exaggeratedRadius != 0f && Application.isPlaying)
-            {
-                if (useExaggeratedRadius && radii.celestial.radius != radii.exaggeratedRadius)
-                    radii.celestial.radius += ShiftScale(radii.realisticRadius, radii.exaggeratedRadius, 1f);
-                else if (radii.celestial.radius != radii.realisticRadius)
-                    radii.celestial.radius += ShiftScale(radii.exaggeratedRadius, radii.realisticRadius, 1f);
-            }
+            if (useExaggeratedRadius)
+                radii.celestial.radius = radii.exaggeratedRadius;
             else
-            {
-                if (useExaggeratedRadius)
-                    radii.celestial.radius = radii.exaggeratedRadius;
-                else
-                    radii.celestial.radius = radii.realisticRadius;
-            }
+                radii.celestial.radius = radii.realisticRadius;
         }
     }
 
