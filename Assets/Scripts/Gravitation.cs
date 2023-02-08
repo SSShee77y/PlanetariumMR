@@ -25,6 +25,8 @@ public class Gravitation : MonoBehaviour
     private float _trailWidth = 1f;
     [SerializeField] [Tooltip("TrailTime basically signifies the length of a trail | 1 Unit = 1 day")]
     private float _trailTime = 30f;
+    [SerializeField]
+    private TrailRenderer trailRendererPrefab;
 
     private List<GameObject> _celestials = new List<GameObject>();
 
@@ -37,8 +39,6 @@ public class Gravitation : MonoBehaviour
     void Start()
     {
         _lastTimescale = _timescale;
-        GetComponent<TrailRenderer>().widthMultiplier = _trailWidth;
-        GetComponent<TrailRenderer>().time = _trailTime / _timescale;
 
         AddCelestialsToList(_celestials);
         AddTrailsToAll();
@@ -65,15 +65,13 @@ public class Gravitation : MonoBehaviour
     {
         bool needsUpdate = false;
 
-        if (_trailWidth != GetComponent<TrailRenderer>().widthMultiplier)
+        if (_trailWidth != GetComponentInChildren<TrailRenderer>().widthMultiplier)
         {
-            GetComponent<TrailRenderer>().widthMultiplier = _trailWidth;
             needsUpdate = true;
         }
 
-        if (_trailTime / _timescale != GetComponent<TrailRenderer>().time)
+        if (_trailTime / _timescale != GetComponentInChildren<TrailRenderer>().time)
         {
-            GetComponent<TrailRenderer>().time = _trailTime / _timescale;
             needsUpdate = true;
         }
 
@@ -171,18 +169,19 @@ public class Gravitation : MonoBehaviour
     {
         foreach (GameObject body in _celestials)
         {
-            // AddTrailToBody(body);
+            AddTrailToBody(body);
         }
     }
 
     void AddTrailToBody(GameObject body)
     {
-        if (body.GetComponent<TrailRenderer>() == null)
-            body.AddComponent<TrailRenderer>();
-        // NEEDS URGENT FIXING
-        // ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
-        // ComponentUtility.PasteComponentValues(body.GetComponent<TrailRenderer>());
-        body.GetComponent<TrailRenderer>().enabled = true;
+        if (body.GetComponentInChildren<TrailRenderer>() == null)
+            Instantiate(trailRendererPrefab, body.transform);
+
+        body.GetComponentInChildren<TrailRenderer>().widthMultiplier = _trailWidth;
+        body.GetComponentInChildren<TrailRenderer>().time = _trailTime / _timescale;
+
+        body.GetComponentInChildren<TrailRenderer>().enabled = true;
     }
 
     void CalculateSpeedOfAll()
