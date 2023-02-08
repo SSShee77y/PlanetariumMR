@@ -23,8 +23,10 @@ public class Gravitation : MonoBehaviour
     [Header("Trail Settings")]
     [SerializeField] 
     private float _trailWidth = 1f;
-    [SerializeField] [Tooltip("TrailTime basically signifies the length of a trail | 1 Unit = 1 day")]
+    private float _lastTrailWidth;
+    [SerializeField] [Tooltip("Trail time basically signifies the length of a trail | 1 Unit = length made by 1 simulation day")]
     private float _trailTime = 30f;
+    private float _lastTrailTime;
     [SerializeField]
     private TrailRenderer trailRendererPrefab;
 
@@ -53,6 +55,9 @@ public class Gravitation : MonoBehaviour
             Time.timeScale = 1.0f;
 
         CheckTrailRenderer();
+
+        _lastTrailWidth = _trailWidth;
+        _lastTrailTime = _trailTime;
     }
 
     [ContextMenu("ToggleGlobalSimulationPause")]
@@ -65,12 +70,12 @@ public class Gravitation : MonoBehaviour
     {
         bool needsUpdate = false;
 
-        if (_trailWidth != GetComponentInChildren<TrailRenderer>().widthMultiplier)
+        if (_lastTrailWidth != _trailWidth)
         {
             needsUpdate = true;
         }
 
-        if (_trailTime / _timescale != GetComponentInChildren<TrailRenderer>().time)
+        if (_lastTrailTime != _trailTime)
         {
             needsUpdate = true;
         }
