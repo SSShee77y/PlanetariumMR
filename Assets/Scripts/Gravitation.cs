@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditorInternal;
 
 public class Gravitation : MonoBehaviour
 {
@@ -172,7 +171,7 @@ public class Gravitation : MonoBehaviour
     {
         foreach (GameObject body in _celestials)
         {
-            AddTrailToBody(body);
+            // AddTrailToBody(body);
         }
     }
 
@@ -180,8 +179,9 @@ public class Gravitation : MonoBehaviour
     {
         if (body.GetComponent<TrailRenderer>() == null)
             body.AddComponent<TrailRenderer>();
-        ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
-        ComponentUtility.PasteComponentValues(body.GetComponent<TrailRenderer>());
+        // NEEDS URGENT FIXING
+        // ComponentUtility.CopyComponent(GetComponent<TrailRenderer>());
+        // ComponentUtility.PasteComponentValues(body.GetComponent<TrailRenderer>());
         body.GetComponent<TrailRenderer>().enabled = true;
     }
 

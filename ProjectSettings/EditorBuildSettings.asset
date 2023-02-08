@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/GrabMergeTest.unity
+    guid: a29958568130dae47b0dc064f338c26e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: f1e026e508b0fed4188b0772f10c60c4, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 98b2c83eab7a9dd4fa22a6e9e78c6627, type: 2}
