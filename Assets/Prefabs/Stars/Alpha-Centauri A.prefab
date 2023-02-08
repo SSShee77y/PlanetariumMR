@@ -131,7 +131,7 @@ MonoBehaviour:
   initialSpeed: 0.192624
   apocenter: 0
   pericenter: 0
-  semiMajorAxis: 0
+  semiMajorAxis: 2420
   orbitalPrimary: {fileID: 0}
   setToOrbit: 0
   axialTilt: 0
