@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7612acbc1a4a4ed0afa5f4ccbe42bee4, type: 3}
-  m_Name: New MixedRealityToolkitConfigurationProfile 1
+  m_Name: CustomMRTKConfigurationProfile
   m_EditorClassIdentifier: 
   isCustomProfile: 1
   experienceSettingsProfile: {fileID: 11400000, guid: 1ccbb3b1d759d6a49b4161a958329d9d, type: 2}
@@ -21,7 +21,7 @@ MonoBehaviour:
     reference: Microsoft.MixedReality.Toolkit.CameraSystem.MixedRealityCameraSystem,
       Microsoft.MixedReality.Toolkit.Services.CameraSystem
   enableInputSystem: 1
-  inputSystemProfile: {fileID: 11400000, guid: 81dc663f18f72b74f8bd5228a6ec253d, type: 2}
+  inputSystemProfile: {fileID: 11400000, guid: e928ec184ec606c4f944fa86e50e7bf9, type: 2}
   inputSystemType:
     reference: Microsoft.MixedReality.Toolkit.Input.MixedRealityInputSystem, Microsoft.MixedReality.Toolkit.Services.InputSystem
   enableBoundarySystem: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
       Microsoft.MixedReality.Toolkit.Services.BoundarySystem
   xrsdkBoundarySystemType:
     reference: Microsoft.MixedReality.Toolkit.XRSDK.XRSDKBoundarySystem, Microsoft.MixedReality.Toolkit.Providers.XRSDK
-  boundaryVisualizationProfile: {fileID: 11400000, guid: 1914f3939d1a9c24293e0ca6bf0c4d52, type: 2}
+  boundaryVisualizationProfile: {fileID: 11400000, guid: 2b59a3062f4239348a37f0544883c210, type: 2}
   enableTeleportSystem: 0
   teleportSystemType:
     reference: Microsoft.MixedReality.Toolkit.Teleport.MixedRealityTeleportSystem,
@@ -39,8 +39,8 @@ MonoBehaviour:
   spatialAwarenessSystemType:
     reference: Microsoft.MixedReality.Toolkit.SpatialAwareness.MixedRealitySpatialAwarenessSystem,
       Microsoft.MixedReality.Toolkit.Services.SpatialAwarenessSystem
-  spatialAwarenessSystemProfile: {fileID: 11400000, guid: d62633b6bdd40a24d8412ce8c10620ca, type: 2}
-  diagnosticsSystemProfile: {fileID: 11400000, guid: 4b8d30f012453b144ae6b5591c00c85c, type: 2}
+  spatialAwarenessSystemProfile: {fileID: 11400000, guid: 906c2278e466310498820919f83569a9, type: 2}
+  diagnosticsSystemProfile: {fileID: 11400000, guid: 53c129f28206d59488ac8f2520455866, type: 2}
   enableDiagnosticsSystem: 1
   diagnosticsSystemType:
     reference: Microsoft.MixedReality.Toolkit.Diagnostics.MixedRealityDiagnosticsSystem,
