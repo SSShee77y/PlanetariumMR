@@ -60,6 +60,15 @@ public class CelestialInfo : MonoBehaviour
         transform.localEulerAngles = new Vector3(axialTilt, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
+    private void FixedUpdate()
+    {
+        if (transform.parent == null)
+        {
+            RotateOnAxis(1.0f);
+            
+        }
+    }
+
     public void RotateOnAxis(float timescale)
     {
         transform.localEulerAngles -= new Vector3(0, rotationSpeed * 360f * Time.deltaTime * timescale, 0);
@@ -87,6 +96,9 @@ public class CelestialInfo : MonoBehaviour
 
     public void UpdateParentScale()
     {
-        previousParentScale = transform.parent.localScale.x;
+        if (transform.parent != null)
+        {
+            previousParentScale = transform.parent.localScale.x;
+        }
     }
 }
