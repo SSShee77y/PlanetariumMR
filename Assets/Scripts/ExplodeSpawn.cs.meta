@@ -3,7 +3,9 @@ guid: bb488e2e9387be44aa3047161a2a3383
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - supernova: {fileID: 3766517815844690468, guid: 71f078b8f1fae194c9b8f8363c6ff8d4, type: 3}
+  - planetToSpawn: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

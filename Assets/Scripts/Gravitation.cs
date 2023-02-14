@@ -88,8 +88,10 @@ public class Gravitation : MonoBehaviour
 
     private void FixedUpdate() // Called 50 times per second (Not affected by Time.timescale)
     {
+        _celestials.Clear();
+        AddCelestialsToList(_celestials);
+        
         SetSystemScaleToBox();
-        UpdateCelestialsList();
         UpdateTimescale();
         ScaleCheck();
         ApplyGravity();
@@ -228,41 +230,6 @@ public class Gravitation : MonoBehaviour
         // Will always go Counter-Clockwise (Else just do -= in velocity)
         bodyToCalculate.transform.LookAt(bodyAffecting.transform);
         bodyToCalculate.GetComponent<Rigidbody>().velocity += bodyToCalculate.transform.right * speed; 
-    }
-
-    void UpdateCelestialsList() 
-    {
-        int size = _celestials.Count;
-        List<GameObject> listToAdd = new List<GameObject>();
-        AddCelestialsToList(listToAdd);
-        foreach (GameObject body in listToAdd)
-        {
-            if (!_celestials.Contains(body))
-            {
-                _celestials.Add(body);
-                AddTrailToBody(body);
-                CalculateSpeedOfBody(body);
-            }
-        }
-    }
-
-    GameObject[] FindCurrentCelestials()
-    {
-        GameObject[] celestialList = new  GameObject[0];
-        if (_useChildrenOnly)
-        {
-            CelestialInfo[] celestialInfos = GetComponentsInChildren<CelestialInfo>();
-            celestialList = new GameObject[celestialInfos.Length];
-            for (int i = 0; i < celestialInfos.Length; i++)
-            {
-                celestialList[i] = celestialInfos[i].gameObject;
-            }
-        }   
-        else
-        {   
-            celestialList = GameObject.FindGameObjectsWithTag("Celestial");
-        }
-        return celestialList;
     }
 
     void UpdateTimescale()

@@ -81,7 +81,10 @@ public class CelestialInfo : MonoBehaviour
 
     public bool DidParentScaleChange()
     {
-        return !(previousParentScale.Equals(transform.parent.localScale.x));
+        if (transform.parent != null)
+            return !(previousParentScale.Equals(transform.parent.localScale.x));
+        
+        return false;
     }
 
     public float GetPreviousParentScale()
