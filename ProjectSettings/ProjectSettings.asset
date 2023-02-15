@@ -135,9 +135,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1
-  preloadedAssets:
-  - {fileID: -5043789135756734485, guid: 11c2a65fcc8938e40b204bb58b4db051, type: 2}
-  - {fileID: 8148549307345091151, guid: 2ad9f698012b97147bb61c2c5ae69b7c, type: 2}
+  preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -730,10 +728,10 @@ PlayerSettings:
   metroPackageName: OrbitGrabApp
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets/WSATestCertificate.pfx
-  metroCertificatePassword: BmbcDyamb><>?
+  metroCertificatePassword: 
   metroCertificateSubject: Lehigh NHI
   metroCertificateIssuer: Lehigh NHI
-  metroCertificateNotAfter: 005cd401f65ada01
+  metroCertificateNotAfter: 802df2efbb5fda01
   metroApplicationDescription: Template_Lightweight
   wsaImages: {}
   metroTileShortName: HoloLensBase
