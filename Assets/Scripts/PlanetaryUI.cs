@@ -14,11 +14,11 @@ public class PlanetaryUI : MonoBehaviour
     
     void Update()
     {
-        ManageTargetBoxAmount();
-        UpdateTargetBox();
+        ManageHighlightsAmount();
+        UpdateHighlightBox();
     }
 
-    void UpdateTargetBox()
+    void UpdateHighlightBox()
     {
         // Disable targetbox if the object is behind you relatively (negative relative z)
 
@@ -27,15 +27,28 @@ public class PlanetaryUI : MonoBehaviour
 
         for (int i = 0; i < _celestialUIList.Count && i < celestials.Count; i++)
         {
-            GameObject enemy = celestials[i].gameObject;
-            GameObject targetBox = _celestialUIList[i];
+            GameObject celestial = celestials[i].gameObject;
+            GameObject highlightBox = _celestialUIList[i];
 
-            Vector3 displacement = (enemy.transform.position - _mainCamera.transform.position);
-            targetBox.GetComponent<RectTransform>().anchoredPosition = DisplacementToAnchorPosition(displacement);
+            Vector3 displacement = (celestial.transform.position - _mainCamera.transform.position);
+
+            if (Vector3.Dot(displacement, _mainCamera.transform.forward) <= 0)
+            {
+                highlightBox.SetActive(false);
+                continue;
+            }
+            else
+            {
+                highlightBox.SetActive(true);
+            }
+
+            highlightBox.GetComponentInChildren<TextMeshProUGUI>().text = celestial.name;
+
+            highlightBox.GetComponent<RectTransform>().anchoredPosition = DisplacementToAnchorPosition(displacement);
         }
     }
 
-    Vector2 DisplacementToAnchorPosition(Vector3 displacement)
+    Vector3 DisplacementToAnchorPosition(Vector3 displacement)
     {
         Vector3 relativeDisplacement = new Vector3();
         relativeDisplacement.z = Vector3.Dot(displacement, _mainCamera.transform.forward);
@@ -50,7 +63,7 @@ public class PlanetaryUI : MonoBehaviour
         return newAnchorPosition;
     }
 
-    void ManageTargetBoxAmount()
+    void ManageHighlightsAmount()
     {
         List<CelestialInfo> celestials = new List<CelestialInfo>();
         celestials.AddRange(FindObjectsOfType<CelestialInfo>());
