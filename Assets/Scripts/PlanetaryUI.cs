@@ -9,6 +9,10 @@ public class PlanetaryUI : MonoBehaviour
     private Camera _mainCamera;
     [SerializeField]
     private GameObject _celestialUIPrefab;
+    [SerializeField] [Tooltip("The highlight box will not show up if the diameter is bigger than (this factor * screen height)")]
+    private float _maxCloseUpFactor = 0.5f;
+    [SerializeField]
+    private float _textOffset = 260f;
     
     private List<GameObject> _celestialUIList = new List<GameObject>();
     
@@ -30,9 +34,9 @@ public class PlanetaryUI : MonoBehaviour
             GameObject celestial = celestials[i].gameObject;
             GameObject highlightBox = _celestialUIList[i];
 
-            Vector3 displacement = (celestial.transform.position - _mainCamera.transform.position);
+            Vector3 relativeDisplacement = GetRelativeDisplacement(celestial.transform, _mainCamera.transform);
 
-            if (Vector3.Dot(displacement, _mainCamera.transform.forward) <= 0)
+            if (relativeDisplacement.z <= 0)
             {
                 highlightBox.SetActive(false);
                 continue;
@@ -42,25 +46,55 @@ public class PlanetaryUI : MonoBehaviour
                 highlightBox.SetActive(true);
             }
 
-            highlightBox.GetComponentInChildren<TextMeshProUGUI>().text = celestial.name;
+            TextMeshProUGUI textMeshProUGUI = highlightBox.GetComponentInChildren<TextMeshProUGUI>();
+            GameObject image = highlightBox.transform.GetChild(0).gameObject;
 
-            highlightBox.GetComponent<RectTransform>().anchoredPosition = DisplacementToAnchorPosition(displacement);
+            textMeshProUGUI.text = celestial.name;
+
+            float scaleWidth = RelativeWidth(relativeDisplacement, celestial.transform.lossyScale.x);
+            scaleWidth = Mathf.Clamp(scaleWidth, 100f, _maxCloseUpFactor * 4f * GetComponent<RectTransform>().sizeDelta.y); 
+            if (scaleWidth >= _maxCloseUpFactor * 4f * GetComponent<RectTransform>().sizeDelta.y)
+            {
+                highlightBox.SetActive(false);
+                continue;
+            }
+
+            image.GetComponent<RectTransform>().sizeDelta = new Vector2(scaleWidth, scaleWidth);
+            textMeshProUGUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(_textOffset + (scaleWidth / 2.0f), 0);
+
+            highlightBox.GetComponent<RectTransform>().anchoredPosition = RelativeDisplacementToAnchor(relativeDisplacement);
         }
     }
 
-    Vector3 DisplacementToAnchorPosition(Vector3 displacement)
+    Vector3 GetRelativeDisplacement(Transform toTransform, Transform fromTransform)
     {
-        Vector3 relativeDisplacement = new Vector3();
-        relativeDisplacement.z = Vector3.Dot(displacement, _mainCamera.transform.forward);
-        relativeDisplacement.y = Vector3.Dot(displacement, _mainCamera.transform.up);
-        relativeDisplacement.x = Vector3.Dot(displacement, _mainCamera.transform.right);
+        Vector3 displacement = (toTransform.position - fromTransform.position);
 
+        Vector3 relativeDisplacement = new Vector3();
+        relativeDisplacement.z = Vector3.Dot(displacement, fromTransform.forward);
+        relativeDisplacement.y = Vector3.Dot(displacement, fromTransform.up);
+        relativeDisplacement.x = Vector3.Dot(displacement, fromTransform.right);
+
+        return relativeDisplacement;
+    }
+
+    Vector2 RelativeDisplacementToAnchor(Vector3 relativeDisplacement)
+    {
         float horizontalLength = (relativeDisplacement.x / relativeDisplacement.z);
         float verticalLength = (relativeDisplacement.y / relativeDisplacement.z);
         float screenSpaceWidth = GetComponent<RectTransform>().sizeDelta.x / 2.05f;
 
         Vector2 newAnchorPosition = new Vector2(screenSpaceWidth * horizontalLength, screenSpaceWidth * verticalLength);
         return newAnchorPosition;
+    }
+
+    float RelativeWidth(Vector3 relativeDisplacement, float planetScale)
+    {
+        float horizontalLength = (relativeDisplacement.x / relativeDisplacement.z);
+        float screenSpaceWidth = GetComponent<RectTransform>().sizeDelta.x / 2.05f;
+        float scaleLength = ((relativeDisplacement.x + planetScale * 5f) / relativeDisplacement.z);
+
+        return (scaleLength - horizontalLength) * screenSpaceWidth;
     }
 
     void ManageHighlightsAmount()
