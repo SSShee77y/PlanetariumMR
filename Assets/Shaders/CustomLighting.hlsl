@@ -40,6 +40,8 @@ struct CustomLightingData {
     float4 shadowMask;
     float fogFactor;
 
+    // Custom Lighting
+    float lightAttenuation;
 };
 
 // Translate a [0, 1] smoothness value to an exponent 
@@ -71,7 +73,7 @@ float3 CustomLightHandling(CustomLightingData d, Light light) {
     // Lookup "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RealtimeLights.hlsl"
     float3 lightDirection = light.direction;
     float distance = length(light.direction);
-    light.distanceAttenuation = 1.0f;
+    light.distanceAttenuation = d.lightAttenuation;
 
     float3 radiance = light.color * (light.distanceAttenuation * light.shadowAttenuation);
 
@@ -119,7 +121,7 @@ float3 CalculateCustomLighting(CustomLightingData d) {
 
 void CalculateCustomLighting_float(float3 Position, float3 Normal, float3 ViewDirection,
     float3 Albedo, float Smoothness, float AmbientOcclusion, 
-    float2 LightmapUV,
+    float2 LightmapUV, float LightAttenuation,
     out float3 Color) {
 
     CustomLightingData d;
@@ -129,6 +131,7 @@ void CalculateCustomLighting_float(float3 Position, float3 Normal, float3 ViewDi
     d.albedo = Albedo;
     d.smoothness = Smoothness;
     d.ambientOcclusion = AmbientOcclusion;
+    d.lightAttenuation = LightAttenuation;
 
 #ifdef SHADERGRAPH_PREVIEW
     // In preview, there's no shadows or bakedGI
