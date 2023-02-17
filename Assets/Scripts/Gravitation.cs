@@ -9,28 +9,27 @@ public class Gravitation : MonoBehaviour
     private static readonly float G = (6.6743f * Mathf.Pow(10, -11)) / Mathf.Pow(10, 27) * EMass * Mathf.Pow(86400, 2);
 
     [Header("Global Settings")]
-    private static bool _pauseAllSimulations;
+    public static bool PauseAllSimulations;
 
     [Header("Simulation Settings")]
     [SerializeField]
-    private bool _useChildrenOnly;
+    private bool _useChildrenOnly = true;
     [SerializeField] [Tooltip("Useful for stationary simulations with moving parts")]
-    private bool _useCenterOfMassCentering;
+    public bool useCenterOfMassCentering = true;
     [SerializeField] [Tooltip("1 real life second = 1 unit scale = 1 simulation day")]
-    private float _timescale = 1f;
+    public float timescale = 1f;
     private float _lastTimescale = 1f;
 
     [Header("Trail Settings")]
     [SerializeField] 
-    private float _trailWidth = 1f;
-    private float _lastTrailWidth;
+    public float trailWidth = 1f;
     [SerializeField] [Tooltip("Trail time basically signifies the length of a trail | 1 Unit = length made by 1 simulation day")]
-    private float _trailTime = 30f;
-    private float _lastTrailTime;
+    public float trailTime = 30f;
     [SerializeField]
-    private TrailRenderer trailRendererPrefab;
+    private TrailRenderer _trailRendererPrefab;
 
     private List<GameObject> _celestials = new List<GameObject>();
+    private float _lastCelestialsCount;
 
     void OnDrawGizmos()
     {
@@ -40,7 +39,7 @@ public class Gravitation : MonoBehaviour
 
     void Start()
     {
-        _lastTimescale = _timescale;
+        _lastTimescale = timescale;
 
         AddCelestialsToList(_celestials);
         AddTrailsToAll();
@@ -49,55 +48,33 @@ public class Gravitation : MonoBehaviour
 
     private void Update()
     {    
-        if (_pauseAllSimulations)
+        if (PauseAllSimulations)
             Time.timeScale = 0f;
         else
             Time.timeScale = 1.0f;
-
-        CheckTrailRenderer();
-
-        _lastTrailWidth = _trailWidth;
-        _lastTrailTime = _trailTime;
     }
 
     [ContextMenu("ToggleGlobalSimulationPause")]
     public void ToggleGlobalSimulationPause()
     {
-        _pauseAllSimulations = !_pauseAllSimulations;
-    }
-
-    private void CheckTrailRenderer()
-    {
-        bool needsUpdate = false;
-
-        if (_lastTrailWidth != _trailWidth)
-        {
-            needsUpdate = true;
-        }
-
-        if (_lastTrailTime != _trailTime)
-        {
-            needsUpdate = true;
-        }
-
-        if (needsUpdate)
-        {
-            AddTrailsToAll();
-        }
+        PauseAllSimulations = !PauseAllSimulations;
     }
 
     private void FixedUpdate() // Called 50 times per second (Not affected by Time.timescale)
     {
         _celestials.Clear();
         AddCelestialsToList(_celestials);
-        
+
+        ManageTrails();
         SetSystemScaleToBox();
         UpdateTimescale();
         ScaleCheck();
         ApplyGravity();
-        if (_useCenterOfMassCentering)
+        if (useCenterOfMassCentering)
             MoveObjectsToCenterOfSystem();
         RotateCelestialsOnAxis();
+
+        _lastCelestialsCount = _celestials.Count;
     }
 
     void MoveObjectsToCenterOfSystem()
@@ -128,7 +105,7 @@ public class Gravitation : MonoBehaviour
     {
         foreach (GameObject body in _celestials)
         {
-            body.GetComponent<CelestialInfo>().RotateOnAxis(_timescale);
+            body.GetComponent<CelestialInfo>().RotateOnAxis(timescale);
         }
     }
 
@@ -149,7 +126,7 @@ public class Gravitation : MonoBehaviour
 
                     float sizeScaleMultiplier = Mathf.Sqrt(bodyOne.transform.parent.localScale.x);
 
-                    force *= Mathf.Pow(_timescale * sizeScaleMultiplier, 2);
+                    force *= Mathf.Pow(timescale * sizeScaleMultiplier, 2);
 
                     bodyOne.GetComponent<Rigidbody>().AddForce((bodyTwo.transform.position - bodyOne.transform.position).normalized * force);
                 }
@@ -172,6 +149,20 @@ public class Gravitation : MonoBehaviour
         }
     }
 
+    void ManageTrails()
+    {
+        if (_lastCelestialsCount != _celestials.Count)
+        {
+            ResetSystemTrails();
+            Invoke("ResetSystemTrails", Time.deltaTime);
+            Invoke("ResetSystemTrails", Time.deltaTime * 2f);
+        }
+        else
+        {
+            AddTrailsToAll();
+        }
+    }
+
     void AddTrailsToAll()
     {
         foreach (GameObject body in _celestials)
@@ -183,12 +174,20 @@ public class Gravitation : MonoBehaviour
     void AddTrailToBody(GameObject body)
     {
         if (body.GetComponentInChildren<TrailRenderer>() == null)
-            Instantiate(trailRendererPrefab, body.transform);
+            Instantiate(_trailRendererPrefab, body.transform);
 
-        body.GetComponentInChildren<TrailRenderer>().widthMultiplier = _trailWidth;
-        body.GetComponentInChildren<TrailRenderer>().time = _trailTime / _timescale;
+        body.GetComponentInChildren<TrailRenderer>().widthMultiplier = trailWidth;
+        body.GetComponentInChildren<TrailRenderer>().time = trailTime / timescale;
 
         body.GetComponentInChildren<TrailRenderer>().enabled = true;
+    }
+
+    public void ResetSystemTrails()
+    {
+        foreach (TrailRenderer trailRenderer in GetComponentsInChildren<TrailRenderer>())
+        {
+            trailRenderer.time = 0f;
+        }
     }
 
     void CalculateSpeedOfAll()
@@ -225,7 +224,7 @@ public class Gravitation : MonoBehaviour
             speed = Mathf.Sqrt(G * (mass2) / radius);
 
         float sizeScaleMultiplier = bodyAffecting.transform.parent.localScale.x;
-        speed *= _timescale * sizeScaleMultiplier;
+        speed *= timescale * sizeScaleMultiplier;
 
         // Will always go Counter-Clockwise (Else just do -= in velocity)
         bodyToCalculate.transform.LookAt(bodyAffecting.transform);
@@ -235,17 +234,17 @@ public class Gravitation : MonoBehaviour
     void UpdateTimescale()
     {
         // Updates the speed of each celestial object when timescale changes
-        if (_timescale != _lastTimescale)
+        if (timescale != _lastTimescale)
         {
             foreach (GameObject body in _celestials)
             {
                 Rigidbody rb = body.GetComponent<Rigidbody>();
-                float multiplier = _timescale / _lastTimescale;
+                float multiplier = timescale / _lastTimescale;
                 rb.velocity *= multiplier;
             }
         }
 
-        _lastTimescale = _timescale;
+        _lastTimescale = timescale;
     }
 
     void ScaleCheck()
