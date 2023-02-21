@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 674660398925308096}
   - component: {fileID: 674660398925308099}
   - component: {fileID: 674660398925308100}
+  - component: {fileID: 5111509023635293783}
   m_Layer: 0
   m_Name: Sol
   m_TagString: Celestial
@@ -31,6 +32,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 34.7754, y: 34.7754, z: 34.7754}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8525675052069017966}
   m_Father: {fileID: 0}
@@ -55,6 +57,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -137,6 +140,20 @@ MonoBehaviour:
   setToOrbit: 0
   axialTilt: 7.25
   inclination: 0
+--- !u!114 &5111509023635293783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674660398925308098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb488e2e9387be44aa3047161a2a3383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  supernova: {fileID: 3766517815844690468, guid: 71f078b8f1fae194c9b8f8363c6ff8d4, type: 3}
+  planetToSpawn: {fileID: 0}
 --- !u!1 &8493124253636431468
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +164,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8525675052069017966}
   - component: {fileID: 7791990143682081862}
-  - component: {fileID: 246828264355946837}
   m_Layer: 0
   m_Name: Sunlight
   m_TagString: Untagged
@@ -165,6 +181,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 674660398925308103}
   m_RootOrder: 0
@@ -231,18 +248,3 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &246828264355946837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8493124253636431468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a292c309442e0f842a4843d892206721, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseIntensity: 138000
-  baseScale: 1
-  system: {fileID: 0}

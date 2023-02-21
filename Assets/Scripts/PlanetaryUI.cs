@@ -10,12 +10,17 @@ public class PlanetaryUI : MonoBehaviour
     [SerializeField]
     private GameObject _celestialUIPrefab;
     [SerializeField] [Tooltip("The highlight box will not show up if the diameter is bigger than (this factor * screen height)")]
-    private float _maxCloseUpFactor = 0.5f;
+    private float _maxUISizeToScreenHeight = 0.5f;
+    [SerializeField] [Tooltip("How close the camera must be to the object for UI to disappear")]
+    private float _closeUpDistance = 0.4f;
     [SerializeField]
     private float _textOffset = 260f;
+
+    [SerializeField]
+    public float displayRatioScaler = 1.0f;
     
     private List<GameObject> _celestialUIList = new List<GameObject>();
-    
+
     void Update()
     {
         ManageHighlightsAmount();
@@ -36,7 +41,7 @@ public class PlanetaryUI : MonoBehaviour
 
             Vector3 relativeDisplacement = GetRelativeDisplacement(celestial.transform, _mainCamera.transform);
 
-            if (relativeDisplacement.z <= 0)
+            if (relativeDisplacement.z <= 0 || relativeDisplacement.magnitude < _closeUpDistance)
             {
                 highlightBox.SetActive(false);
                 continue;
@@ -52,8 +57,8 @@ public class PlanetaryUI : MonoBehaviour
             textMeshProUGUI.text = celestial.name;
 
             float scaleWidth = RelativeWidth(relativeDisplacement, celestial.transform.lossyScale.x);
-            scaleWidth = Mathf.Clamp(scaleWidth, 100f, _maxCloseUpFactor * 4f * GetComponent<RectTransform>().sizeDelta.y); 
-            if (scaleWidth >= _maxCloseUpFactor * 4f * GetComponent<RectTransform>().sizeDelta.y)
+            scaleWidth = Mathf.Clamp(scaleWidth, 100f, _maxUISizeToScreenHeight * 4f * GetComponent<RectTransform>().sizeDelta.y); 
+            if (scaleWidth >= _maxUISizeToScreenHeight * 4f * GetComponent<RectTransform>().sizeDelta.y)
             {
                 highlightBox.SetActive(false);
                 continue;
@@ -82,7 +87,7 @@ public class PlanetaryUI : MonoBehaviour
     {
         float horizontalLength = (relativeDisplacement.x / relativeDisplacement.z);
         float verticalLength = (relativeDisplacement.y / relativeDisplacement.z);
-        float screenSpaceWidth = GetComponent<RectTransform>().sizeDelta.x / 2.05f;
+        float screenSpaceWidth = GetComponent<RectTransform>().sizeDelta.x / displayRatioScaler;
 
         Vector2 newAnchorPosition = new Vector2(screenSpaceWidth * horizontalLength, screenSpaceWidth * verticalLength);
         return newAnchorPosition;
@@ -91,7 +96,7 @@ public class PlanetaryUI : MonoBehaviour
     float RelativeWidth(Vector3 relativeDisplacement, float planetScale)
     {
         float horizontalLength = (relativeDisplacement.x / relativeDisplacement.z);
-        float screenSpaceWidth = GetComponent<RectTransform>().sizeDelta.x / 2.05f;
+        float screenSpaceWidth = GetComponent<RectTransform>().sizeDelta.x / displayRatioScaler;
         float scaleLength = ((relativeDisplacement.x + planetScale * 5f) / relativeDisplacement.z);
 
         return (scaleLength - horizontalLength) * screenSpaceWidth;
