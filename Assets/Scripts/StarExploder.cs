@@ -27,6 +27,7 @@ public class StarExploder : MonoBehaviour
 
         if (planetToReveal != null)
         {
+            planetToReveal.transform.parent = null;
             planetToReveal.SetActive(true);
         }
         
