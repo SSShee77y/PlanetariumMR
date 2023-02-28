@@ -88,8 +88,9 @@ public class PlanetaryUI : MonoBehaviour
         float horizontalLength = (relativeDisplacement.x / relativeDisplacement.z);
         float verticalLength = (relativeDisplacement.y / relativeDisplacement.z);
         float screenSpaceWidth = GetComponent<RectTransform>().sizeDelta.x / displayRatioScaler;
+        float fromUIToCamera = Vector3.Distance(_mainCamera.transform.position, transform.position);
 
-        Vector2 newAnchorPosition = new Vector2(screenSpaceWidth * horizontalLength, screenSpaceWidth * verticalLength);
+        Vector2 newAnchorPosition = new Vector2(fromUIToCamera * screenSpaceWidth * horizontalLength, fromUIToCamera * screenSpaceWidth * verticalLength);
         return newAnchorPosition;
     }
 
@@ -107,17 +108,17 @@ public class PlanetaryUI : MonoBehaviour
         List<CelestialInfo> celestials = new List<CelestialInfo>();
         celestials.AddRange(FindObjectsOfType<CelestialInfo>());
 
-        if (_celestialUIList.Count > celestials.Count)
+        while (_celestialUIList.Count < celestials.Count)
+        {
+            var newTargetBox = Instantiate(_celestialUIPrefab, transform);
+            newTargetBox.transform.SetParent(gameObject.transform);
+            _celestialUIList.Add(newTargetBox);
+        }
+        while (_celestialUIList.Count > celestials.Count)
         {
             int lastIndex = _celestialUIList.Count - 1;
             Destroy(_celestialUIList[lastIndex].gameObject);
             _celestialUIList.Remove(_celestialUIList[lastIndex]);
-        }
-        else if (_celestialUIList.Count < celestials.Count)
-        {
-            var newTargetBox = Instantiate(_celestialUIPrefab);
-            newTargetBox.transform.SetParent(gameObject.transform);
-            _celestialUIList.Add(newTargetBox);
         }
     }
 }
