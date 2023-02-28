@@ -50,10 +50,16 @@ public class HidePlanetsInRandomStars : MonoBehaviour
                     planet.transform.parent = star;
                     planet.transform.localPosition = new Vector3(0, 0, 0);
                     star.GetComponent<StarExploder>().planetToReveal = planet.gameObject;
-                    planet.gameObject.SetActive(false);
                     break;
                 }
             }
+        }
+
+        for (int i = 0; i < planetsToHide.Count; i++)
+        {
+            Transform planet = planetsToHide[i];
+            planet.transform.parent = parentOfObjectsToHide;
+            planet.gameObject.SetActive(false);
         }
         
     }
