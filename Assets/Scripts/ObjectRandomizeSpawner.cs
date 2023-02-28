@@ -7,7 +7,7 @@ public class ObjectRandomizeSpawner : MonoBehaviour
     [SerializeField]
     private Transform objectToSpawn;
     [SerializeField]
-    private int amountToSpawn = 10;
+    public int amountToSpawn = 10;
     [SerializeField]
     private Vector3 boxSize = new Vector3(1, 1, 1);
     [SerializeField]
@@ -23,6 +23,7 @@ public class ObjectRandomizeSpawner : MonoBehaviour
     private List<Material> materialsList = new List<Material>();
 
     private List<Transform> spawnedObjectsList = new List<Transform>();
+    public List<Transform> SpawnedObjectsList => spawnedObjectsList;
 
     void OnDrawGizmos()
     {
@@ -35,7 +36,8 @@ public class ObjectRandomizeSpawner : MonoBehaviour
     {
         foreach (Transform spawnedObject in spawnedObjectsList)
         {
-            Destroy(spawnedObject.gameObject);
+            if (spawnedObject != null)
+                Destroy(spawnedObject.gameObject);
         }
         spawnedObjectsList.Clear();
         
@@ -47,6 +49,7 @@ public class ObjectRandomizeSpawner : MonoBehaviour
     {
         boxSize = new Vector3(Mathf.Abs(boxSize.x), Mathf.Abs(boxSize.y), Mathf.Abs(boxSize.z));
         SpawnRandomObjects();
+        HidePlanets();
     }
 
     void SpawnRandomObjects()
@@ -83,13 +86,18 @@ public class ObjectRandomizeSpawner : MonoBehaviour
             }
 
             // Use random materials
-            if (useRandomMaterials)
+            if (useRandomMaterials && materialsList.Count > 0)
             {
-                int materialIndex = Random.Range(-1, materialsList.Count);
-                if (materialIndex >= 0) 
-                    spawnedObject.GetComponent<MeshRenderer>().material = materialsList[materialIndex];
+                int materialIndex = Random.Range(0, materialsList.Count);
+                spawnedObject.GetComponent<MeshRenderer>().material = materialsList[materialIndex];
             }
         }
+    }
+
+    void HidePlanets()
+    {
+        if (GetComponent<HidePlanetsInRandomStars>() != null) 
+            GetComponent<HidePlanetsInRandomStars>().HidePlanets();
     }
 
     Vector3 GetRandomizedSpawnPoint()

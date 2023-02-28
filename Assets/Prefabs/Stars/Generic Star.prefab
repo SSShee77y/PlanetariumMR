@@ -293,7 +293,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -349,9 +349,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a292c309442e0f842a4843d892206721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseIntensity: 1300
-  baseScale: 1
-  system: {fileID: 0}
+  baseIntensity: 0.02
+  baseScale: 0.2
+  system: {fileID: 6437235661521916780}
 --- !u!114 &6437235661542805831
 MonoBehaviour:
   m_ObjectHideFlags: 0
