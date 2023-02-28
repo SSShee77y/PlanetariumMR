@@ -7,9 +7,9 @@ public class StarExploder : MonoBehaviour
     [SerializeField]
     private ParticleSystem supernova;
     [SerializeField]
-    private GameObject planetToSpawn;
+    public GameObject planetToSpawn;
     [SerializeField]
-    private GameObject planetToReveal;
+    public GameObject planetToReveal;
 
     [ContextMenu("ExplodeStar")]
     public void ExplodeStar()
@@ -27,7 +27,8 @@ public class StarExploder : MonoBehaviour
 
         if (planetToReveal != null)
         {
-            planetToReveal.transform.parent = null;
+            if (planetToReveal.transform.parent == transform)
+                planetToReveal.transform.parent = null;
             planetToReveal.SetActive(true);
         }
         
