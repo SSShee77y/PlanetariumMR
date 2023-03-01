@@ -258,10 +258,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 43157421}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &56964222
 PrefabInstance:
@@ -604,6 +604,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1909545311325705499, guid: 7166b9da00ed8094dadf502c985175d6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909545311325705499, guid: 7166b9da00ed8094dadf502c985175d6, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -776,6 +780,10 @@ PrefabInstance:
     - target: {fileID: 3932016687631453834, guid: f27a7359a55610c43bfbeb913074f9fe, type: 3}
       propertyPath: m_AngularDrag
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932016687631453835, guid: f27a7359a55610c43bfbeb913074f9fe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453835, guid: f27a7359a55610c43bfbeb913074f9fe, type: 3}
       propertyPath: m_IsTrigger
@@ -1870,6 +1878,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6486189664130240920, guid: 399939e904087fc4aae4a183137f35df, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486189664130240920, guid: 399939e904087fc4aae4a183137f35df, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -1932,7 +1944,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 787872422}
+  constraintsManager: {fileID: 1047707124}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -2239,6 +2251,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 97c91427d39eb0d4b9fba1aecf4d3820, type: 2}
     - target: {fileID: 3031140081998927805, guid: fe80e8ef85eecc14f95e5a3afca93dff, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3031140081998927805, guid: fe80e8ef85eecc14f95e5a3afca93dff, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -2362,7 +2378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1112823920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2463,7 +2479,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 43157423}
+  constraintsManager: {fileID: 787872422}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -2773,6 +2789,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453835, guid: a54e5c6a4cfb9154b82fcd676e04b0b2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932016687631453835, guid: a54e5c6a4cfb9154b82fcd676e04b0b2, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -2834,7 +2854,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 43157423}
+  constraintsManager: {fileID: 787872422}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -3515,9 +3535,21 @@ PrefabInstance:
       propertyPath: m_AngularDrag
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3932016687631453835, guid: 524769594e42cf84998cc70aed70f7e4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932016687631453835, guid: 524769594e42cf84998cc70aed70f7e4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453837, guid: 524769594e42cf84998cc70aed70f7e4, type: 3}
       propertyPath: m_Name
       value: Jupiter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932016687631453837, guid: 524769594e42cf84998cc70aed70f7e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 524769594e42cf84998cc70aed70f7e4, type: 3}
@@ -3574,7 +3606,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 43157423}
+  constraintsManager: {fileID: 1947204003}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -3688,6 +3720,10 @@ PrefabInstance:
     - target: {fileID: 3932016687631453834, guid: cfbf1ff17af824e449d8a96d09d5a514, type: 3}
       propertyPath: m_AngularDrag
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3932016687631453835, guid: cfbf1ff17af824e449d8a96d09d5a514, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453835, guid: cfbf1ff17af824e449d8a96d09d5a514, type: 3}
       propertyPath: m_IsTrigger
