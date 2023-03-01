@@ -41,8 +41,7 @@ public class ObjectRandomizeSpawner : MonoBehaviour
         }
         spawnedObjectsList.Clear();
         
-        boxSize = new Vector3(Mathf.Abs(boxSize.x), Mathf.Abs(boxSize.y), Mathf.Abs(boxSize.z));
-        SpawnRandomObjects();
+        Invoke("Start", Time.deltaTime * 2);
     }
 
     void Start()
@@ -59,9 +58,20 @@ public class ObjectRandomizeSpawner : MonoBehaviour
             // Get random spawn position and check if valid according to collisions
             // (possible endless loop if bounds too small for amount generated)
             Vector3 spawnPosition = GetRandomizedSpawnPoint();
-            while (Physics.CheckSphere(spawnPosition, minimumDistanceFromOthers)) // true == meaning there is collision
+            bool unableToSpawn = false;
+            for (int j = 0; Physics.CheckSphere(spawnPosition, minimumDistanceFromOthers); j++) // conidtion true == meaning there is collision
             {
                 spawnPosition = GetRandomizedSpawnPoint();
+                if (j > 10)
+                {
+                    Debug.LogWarning("Unable to spawn object | Too many objects or not enough space");
+                    unableToSpawn = true;
+                    break;
+                }
+            }
+            if (unableToSpawn)
+            {
+                break;
             }
             
             // Spawn object

@@ -40,6 +40,12 @@ public class HidePlanetsInRandomStars : MonoBehaviour
 
         for (int i = 0; i < planetsToHide.Count; i++)
         {
+            Transform planet = planetsToHide[i];
+            planet.gameObject.SetActive(true);
+        }
+
+        for (int i = 0; i < planetsToHide.Count; i++)
+        {
             while (true)
             {
                 int starsListIndex = Random.Range(0, starsList.Count);
