@@ -9,15 +9,14 @@ public class PlanetaryUI : MonoBehaviour
     private Camera _mainCamera;
     [SerializeField]
     private GameObject _celestialUIPrefab;
-    [SerializeField] [Tooltip("The highlight box will not show up if the diameter is bigger than (this factor * screen height)")]
-    private float _maxUISizeToScreenHeight = 0.5f;
+    [SerializeField]
+    private float _UISize = 1.0f;
+    [SerializeField] [Tooltip("Number that represents how big the UI can take up the screen before disappearing")]
+    private float _maxUIScreenScale = 5f;
     [SerializeField] [Tooltip("How close the camera must be to the object for UI to disappear")]
     private float _closeUpDistance = 0.4f;
     [SerializeField]
     private float _textOffset = 260f;
-
-    [SerializeField]
-    public float displayRatioScaler = 1.0f;
     
     private List<GameObject> _celestialUIList = new List<GameObject>();
 
@@ -41,7 +40,7 @@ public class PlanetaryUI : MonoBehaviour
 
             Vector3 relativeDisplacement = GetRelativeDisplacement(celestial.transform, _mainCamera.transform);
 
-            if (relativeDisplacement.z <= 0 || relativeDisplacement.magnitude < _closeUpDistance)
+            if (relativeDisplacement.z < _closeUpDistance)
             {
                 highlightBox.SetActive(false);
                 continue;
@@ -56,18 +55,16 @@ public class PlanetaryUI : MonoBehaviour
 
             textMeshProUGUI.text = celestial.name;
 
-            float scaleWidth = RelativeWidth(relativeDisplacement, celestial.transform.lossyScale.x);
-            scaleWidth = Mathf.Clamp(scaleWidth, 100f, _maxUISizeToScreenHeight * 4f * GetComponent<RectTransform>().sizeDelta.y); 
-            if (scaleWidth >= _maxUISizeToScreenHeight * 4f * GetComponent<RectTransform>().sizeDelta.y)
+            float scaleWidth = celestial.transform.lossyScale.x;
+            if ((_UISize * scaleWidth) / (Mathf.Tan(_mainCamera.fieldOfView * Mathf.Deg2Rad) * relativeDisplacement.z) >= _maxUIScreenScale)
             {
                 highlightBox.SetActive(false);
                 continue;
             }
 
-            image.GetComponent<RectTransform>().sizeDelta = new Vector2(scaleWidth, scaleWidth);
-            textMeshProUGUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(_textOffset + (scaleWidth / 2.0f), 0);
-
-            highlightBox.GetComponent<RectTransform>().anchoredPosition = RelativeDisplacementToAnchor(relativeDisplacement);
+            highlightBox.GetComponent<RectTransform>().position = celestial.transform.position;
+            image.GetComponent<RectTransform>().sizeDelta = new Vector2(_UISize * scaleWidth * 100f, _UISize * scaleWidth * 100f);
+            textMeshProUGUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(_textOffset + (_UISize * scaleWidth * 100f / 2.0f), 0);
         }
     }
 
@@ -81,26 +78,6 @@ public class PlanetaryUI : MonoBehaviour
         relativeDisplacement.x = Vector3.Dot(displacement, fromTransform.right);
 
         return relativeDisplacement;
-    }
-
-    Vector2 RelativeDisplacementToAnchor(Vector3 relativeDisplacement)
-    {
-        float horizontalLength = (relativeDisplacement.x / relativeDisplacement.z);
-        float verticalLength = (relativeDisplacement.y / relativeDisplacement.z);
-        float screenSpaceWidth = GetComponent<RectTransform>().sizeDelta.x / displayRatioScaler;
-        float fromUIToCamera = Vector3.Distance(_mainCamera.transform.position, transform.position);
-
-        Vector2 newAnchorPosition = new Vector2(fromUIToCamera * screenSpaceWidth * horizontalLength, fromUIToCamera * screenSpaceWidth * verticalLength);
-        return newAnchorPosition;
-    }
-
-    float RelativeWidth(Vector3 relativeDisplacement, float planetScale)
-    {
-        float horizontalLength = (relativeDisplacement.x / relativeDisplacement.z);
-        float screenSpaceWidth = GetComponent<RectTransform>().sizeDelta.x / displayRatioScaler;
-        float scaleLength = ((relativeDisplacement.x + planetScale * 5f) / relativeDisplacement.z);
-
-        return (scaleLength - horizontalLength) * screenSpaceWidth;
     }
 
     void ManageHighlightsAmount()
