@@ -28,8 +28,6 @@ public class PlanetaryUI : MonoBehaviour
 
     void UpdateHighlightBox()
     {
-        // Disable targetbox if the object is behind you relatively (negative relative z)
-
         List<CelestialInfo> celestials = new List<CelestialInfo>();
         celestials.AddRange(FindObjectsOfType<CelestialInfo>());
 
