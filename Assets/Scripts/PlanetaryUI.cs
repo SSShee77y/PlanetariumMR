@@ -61,6 +61,7 @@ public class PlanetaryUI : MonoBehaviour
             }
 
             highlightBox.GetComponent<RectTransform>().position = celestial.transform.position;
+            highlightBox.transform.rotation = _mainCamera.transform.rotation;
             image.GetComponent<RectTransform>().sizeDelta = new Vector2(_UISize * scaleWidth * 100f, _UISize * scaleWidth * 100f);
             textMeshProUGUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(_textOffset + (_UISize * scaleWidth * 100f / 2.0f), 0);
         }
