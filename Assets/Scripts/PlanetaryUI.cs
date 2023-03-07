@@ -5,10 +5,13 @@ using TMPro;
 
 public class PlanetaryUI : MonoBehaviour
 {
+    [Header("Objects To Link")]
     [SerializeField]
     private Camera _mainCamera;
     [SerializeField]
     private GameObject _celestialUIPrefab;
+
+    [Header("Visual Options")]
     [SerializeField]
     private float _UISize = 1.0f;
     [SerializeField] [Tooltip("Number that represents how big the UI can take up the screen before disappearing")]
@@ -17,6 +20,8 @@ public class PlanetaryUI : MonoBehaviour
     private float _closeUpDistance = 0.4f;
     [SerializeField]
     private float _textOffset = 260f;
+    [SerializeField]
+    private float _baseTextScale = 0.9f;
     
     private List<GameObject> _celestialUIList = new List<GameObject>();
 
@@ -63,7 +68,9 @@ public class PlanetaryUI : MonoBehaviour
             highlightBox.GetComponent<RectTransform>().position = celestial.transform.position;
             highlightBox.transform.rotation = _mainCamera.transform.rotation;
             image.GetComponent<RectTransform>().sizeDelta = new Vector2(_UISize * scaleWidth * 100f, _UISize * scaleWidth * 100f);
-            textMeshProUGUI.GetComponent<RectTransform>().anchoredPosition = new Vector2(_textOffset + (_UISize * scaleWidth * 100f / 2.0f), 0);
+            textMeshProUGUI.transform.parent.GetComponent<RectTransform>().anchoredPosition = new Vector2(_textOffset + (_UISize * scaleWidth * 100f / 2.0f), 0);
+            float textScale = relativeDisplacement.z * (_baseTextScale + scaleWidth) / 2f;
+            textMeshProUGUI.transform.parent.transform.localScale = new Vector3(textScale, textScale, textScale);
         }
     }
 
