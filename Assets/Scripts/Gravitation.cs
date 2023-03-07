@@ -229,8 +229,10 @@ public class Gravitation : MonoBehaviour
         speed *= timescale * sizeScaleMultiplier;
 
         // Will always go Counter-Clockwise (Else just do -= in velocity)
+        Quaternion previousRotation = bodyToCalculate.transform.rotation;
         bodyToCalculate.transform.LookAt(bodyAffecting.transform);
         bodyToCalculate.GetComponent<Rigidbody>().velocity += bodyToCalculate.transform.right * speed; 
+        bodyToCalculate.transform.rotation = previousRotation;
     }
 
     void UpdateTimescale()

@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2870.972, y: 0, z: 0}
   m_LocalScale: {x: 14.2984, y: 14.2984, z: 14.2984}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,6 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -127,7 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mass: 14.5427
   radius: 2.5559
-  rotationSpeed: 1.3921179
+  rotationSpeed: -1.392118
   initialSpeed: 0
   apocenter: 3006.4
   pericenter: 2735.6

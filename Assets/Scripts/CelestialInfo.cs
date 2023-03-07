@@ -52,26 +52,34 @@ public class CelestialInfo : MonoBehaviour
 
     private void Update()
     {
+        if (Application.isEditor && !Application.isPlaying)
+        {
+            SetAxialTilt(axialTilt);
+        }
+
         mass = Mathf.Clamp(mass, 0f, float.MaxValue);
         radius = Mathf.Clamp(radius, 0f, float.MaxValue);
 
         GetComponent<Rigidbody>().mass = mass;
         transform.localScale = new Vector3(radius * 2, radius * 2, radius * 2);
-        transform.localEulerAngles = new Vector3(axialTilt, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
     private void FixedUpdate()
     {
-        if (transform.parent == null)
+        if (true)
         {
             RotateOnAxis(1.0f);
-            
         }
     }
 
     public void RotateOnAxis(float timescale)
     {
-        transform.localEulerAngles -= new Vector3(0, rotationSpeed * 360f * Time.deltaTime * timescale, 0);
+        transform.Rotate(new Vector3(0, rotationSpeed * 360f * Time.deltaTime * timescale, 0));
+    }
+
+    public void SetAxialTilt(float axialTilt)
+    {
+        transform.localEulerAngles = new Vector3(axialTilt, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
     public OrbitType GetOrbitType()
