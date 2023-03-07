@@ -30,6 +30,7 @@ public class Gravitation : MonoBehaviour
 
     private List<GameObject> _celestials = new List<GameObject>();
     private float _lastCelestialsCount;
+    private float _lastScale;
 
     void OnDrawGizmos()
     {
@@ -65,8 +66,8 @@ public class Gravitation : MonoBehaviour
         _celestials.Clear();
         AddCelestialsToList(_celestials);
 
-        ManageTrails();
         SetSystemScaleToBox();
+        ManageTrails();
         UpdateTimescale();
         ScaleCheck();
         ApplyGravity();
@@ -75,6 +76,7 @@ public class Gravitation : MonoBehaviour
         RotateCelestialsOnAxis();
 
         _lastCelestialsCount = _celestials.Count;
+        _lastScale = transform.localScale.x;
     }
 
     void MoveObjectsToCenterOfSystem()
@@ -151,7 +153,7 @@ public class Gravitation : MonoBehaviour
 
     void ManageTrails()
     {
-        if (_lastCelestialsCount != _celestials.Count)
+        if (_lastCelestialsCount != _celestials.Count || transform.localScale.x != _lastScale)
         {
             ResetSystemTrails();
             Invoke("ResetSystemTrails", Time.deltaTime);

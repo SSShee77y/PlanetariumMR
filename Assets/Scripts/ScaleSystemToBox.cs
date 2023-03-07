@@ -7,15 +7,15 @@ public class ScaleSystemToBox : MonoBehaviour
     [SerializeField]
     private bool useAverageDistanceInstead;
     [SerializeField]
-    private float maxDiameter = 1f;
-    [SerializeField]
     private Vector3 defaultScale = new Vector3(1f, 1f, 1f);
+    [SerializeField] [Tooltip("Higher number means faster scaling")]
+    private float scalingFactor = 0.5f;
 
     [ContextMenu("SetNewScale")]
     public void SetNewScale()
     {
         if (!isEnabled) return;
-        transform.localScale = defaultScale * (maxDiameter / 2f / GetFarthestDistance());
+        transform.localScale = defaultScale / 2f / Mathf.Pow(GetFarthestDistance(), scalingFactor);
     }
 
     private float GetFarthestDistance()
