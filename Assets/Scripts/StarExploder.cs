@@ -17,7 +17,7 @@ public class StarExploder : MonoBehaviour
         if (supernova != null)
         {
             var spawnedSupernova = Instantiate(supernova, transform.position, transform.rotation);
-            Destroy(spawnedSupernova, 5.0f);
+            Destroy(spawnedSupernova.gameObject, 5.0f);
         }
 
         if (planetToSpawn != null)
