@@ -56,7 +56,7 @@ public class SplashScreen : MonoBehaviour
         {
             if (SceneNameToLoadInto != null && SceneNameToLoadInto.Length > 0)
             {
-                Invoke("LoadNextScene", FadeOutTime * 1.5f);
+                Invoke("LoadNextScene", 1f); // One second delay needed for complete animation cycle
             }
             _attemptedSceneLoad = true;
         }

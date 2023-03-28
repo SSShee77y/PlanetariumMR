@@ -9,6 +9,8 @@ public class Collector : MonoBehaviour
     [Header("Extra Flags")]
     [SerializeField]
     private bool disableChildrenOnStart;
+    [SerializeField] [Tooltip("True = destroy on collect | false = disable on collect")]
+    private bool destroyOnCollect;
     [SerializeField]
     private bool useExclusionList;
     [SerializeField]
@@ -26,8 +28,9 @@ public class Collector : MonoBehaviour
         if (disableChildrenOnStart)
             DisableChildren();
     }
-
-    private void DisableChildren()
+    
+    [ContextMenu("DisableChildren")]
+    public void DisableChildren()
     {
         foreach (Transform child in simulationSystem.GetComponentsInChildren<Transform>())
         {
@@ -60,7 +63,10 @@ public class Collector : MonoBehaviour
         if (childNameIndex >= 0)
         {
             celesials[childNameIndex].gameObject.SetActive(true);
-            Destroy(other.gameObject);
+            if (destroyOnCollect)
+                Destroy(other.gameObject);
+            else
+                other.gameObject.SetActive(false);
         }
     }
 
