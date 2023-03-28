@@ -2694,17 +2694,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Test
-
-    Info
-
-    Test
-
-    Info
-
-    Test
-
-    Info'
+  m_text: "Name: Planet\nMass: \nOrbital Period: \nRotation Period: \nDensity: \nTemperature:
+    \nCool Facts:\nPlanet rains diamonds\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2731,8 +2722,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2825,18 +2816,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248879582}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.001}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: -0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1949213588}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 15.000001, y: 1}
+  m_SizeDelta: {x: 20, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1309338961
 PrefabInstance:
@@ -4061,29 +4052,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1248879583}
-  TextInfo: 'Test
-
-    Info
-
-    Test
-
-    Info
-
-    Test
-
-    Info'
+  TextInfo: "Name: Planet\nMass: \nOrbital Period: \nRotation Period: \nDensity:
+    \nTemperature: \nCool Facts:\nPlanet rains diamonds\n"
   textAlignment: 1
   backplate: {fileID: 5505537922445783448}
-  heightPerLine: 0.011
+  heightPerLine: 0.015
   heightPerMargin: 0.008
-  containerWidth: 0.15
+  containerWidth: 0.2
   outlineThickness: 0.01
   objectToHover: {fileID: 0}
   faceCamera: 1
   hoverSide: 1
-  hoverGap: 0.12
+  hoverGap: 0.1
   addObjectScaleForGap: 1
-  hoverFront: 0.2
+  hoverFront: 0.1
 --- !u!1001 &2044755866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4364,7 +4346,7 @@ Transform:
   m_GameObject: {fileID: 5505537922445783455}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.082, z: 0.01}
+  m_LocalScale: {x: 0.2, y: 0.151, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1949213588}

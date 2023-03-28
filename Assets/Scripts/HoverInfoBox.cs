@@ -150,7 +150,11 @@ public class HoverInfoBox : MonoBehaviour
         }
 
         if (Application.isPlaying && faceCamera)
+        {
             transform.LookAt(FindObjectOfType<Camera>().transform);
+            textMesh.transform.LookAt(FindObjectOfType<Camera>().transform);
+            backplate.transform.LookAt(FindObjectOfType<Camera>().transform);
+        }
     }
 
     private void Update()
@@ -182,7 +186,5 @@ public class HoverInfoBox : MonoBehaviour
         backplate.gameObject.SetActive(false);
         textMesh.gameObject.SetActive(false);
     }
-
-
 
 }
