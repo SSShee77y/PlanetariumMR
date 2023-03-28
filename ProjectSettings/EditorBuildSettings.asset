@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SplashScreen.unity
     guid: 30647c85de8228e4fb07c314b72f52c3
   - enabled: 1
+    path: Assets/Scenes/MenuScreen.unity
+    guid: 2d2e74814507db543b6bf0b37a607e09
+  - enabled: 1
     path: Assets/Scenes/StarRandomizer.unity
     guid: 2aa23d78f3a62e64d843b56299242243
   m_configObjects:
