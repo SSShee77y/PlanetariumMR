@@ -10,7 +10,7 @@ public class CelestialInfo : MonoBehaviour
     [Tooltip("Visual purposes only so far | 1 Unit = 1,000,000 km")]
     public float radius = 1f;
 
-    [Tooltip("1 Unit = 1 day | positive is counterclockwise, negative is clockwise")]
+    [Tooltip("1 Unit = 1 day")]
     public float rotationSpeed = 0f;
     
     [Tooltip("1 Unit = 1,000,000 km / day")]
@@ -66,7 +66,7 @@ public class CelestialInfo : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.GetComponentInParent<Gravitation>() == null)
+        if (true)
         {
             RotateOnAxis(1.0f);
         }
@@ -74,8 +74,7 @@ public class CelestialInfo : MonoBehaviour
 
     public void RotateOnAxis(float timescale)
     {
-
-        transform.Rotate(new Vector3(0, -rotationSpeed * 360f * Time.deltaTime * timescale, 0));
+        transform.Rotate(new Vector3(0, rotationSpeed * 360f * Time.deltaTime * timescale, 0));
     }
 
     public void SetAxialTilt(float axialTilt)

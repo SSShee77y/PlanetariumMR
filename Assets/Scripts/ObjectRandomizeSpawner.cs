@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ObjectRandomizeSpawner : MonoBehaviour
 {
-    [Header("Required Spawning Options")]
     [SerializeField]
     private Transform objectToSpawn;
     [SerializeField]
@@ -14,8 +13,7 @@ public class ObjectRandomizeSpawner : MonoBehaviour
     [SerializeField]
     private float minimumDistanceFromOthers = 1.0f;
     [SerializeField]
-    
-    [Header("Optional Visual Options")]
+
     private bool useRandomRadii = false;
     [SerializeField]
     private Vector2 randomRadiiBounds = new Vector2(0.1f, 0.6f);
