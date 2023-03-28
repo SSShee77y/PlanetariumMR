@@ -556,7 +556,7 @@ MonoBehaviour:
   FadeInTime: 0.7
   SplashScreenTime: 0.8
   FadeOutTime: 0.6
-  SceneNameToLoadInto: StarRandomizer
+  SceneNameToLoadInto: MenuScreen
 --- !u!1 &1874784335
 GameObject:
   m_ObjectHideFlags: 0
