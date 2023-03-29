@@ -5,7 +5,7 @@
 # Density
 # Rotational Period
 # Orbital Period
-# Avg Distance To Primary
+# Avg distance to Primary
 # Cool Facts
 # (# Comments are read as end lines)
 
@@ -13,49 +13,133 @@
 
 10
 Sun
-Mass: 
-Radius: 
-Density: 
-Rotation Period: 
-Cool Facts:
-Planet rains diamonds
+Mass: 332,468.18 Earths
+Radius: 695,508 km
+Density: 1.409 g/cm^3
+Rotation Period: 25.3800
+Orbital Period: 230 M yr
+Avg distance to Primary: 28,000 ly
+Cool Facts: 
+Contains 99.86% of the mass of the Solar System.
+The name for the Solar System stems from the Sun's name, Sol.
 ####
 
 100
 Mercury
-Mass: 
-Radius: 
-Density: 
-Rotational Period: 
-Orbital Period: 
-Avg Distance To Primary: 
+Mass: 3.302 x 10^23 kg
+            0.0553 Earths
+Radius: 2,440.53 km
+Density: 5.427 g/cm^3
+Rotational Period: 58.646 days
+Orbital Period: 87.96 days
+Avg distance to Sun: 57.9 M km
 Cool Facts: 
+
 ####
 
 200
 Venus
+Mass: 4.869 x 10^23 kg
+            0.8153 Earths
+Radius: 6,051.80 km
+Density: 5.243 g/cm^3
+Rotational Period: 243.019 days
+Orbital Period: 224.70 days
+Avg distance to Sun: 108.2 M km
+Cool Facts: 
+
 ####
 
 300
 Earth
+Mass: 5.972 * 10^24 kg
+Radius: 6,378.14 km
+Density: 5.515 g/cm^3
+Rotational Period: 0.9973 days
+Orbital Period: 365.25 days
+Avg distance to Sun: 149.6 M km
+Cool Facts: 
+
+####
+
+301
+Moon [Luna]
+Mass: 7.348 * 10^22 kg
+            0.0123 Earths
+Radius: 1,737.10 km
+Density: 3.346 g/cm^3
+Rotational Period: 27.32 days
+Orbital Period: 27.32 days
+Avg distance to Earth: 384,400 km
+------
+As Earth's moon orbits Earth, it
+rotates in a way that it looks like
+it's always facing Earth. However,
+the moon does "wobble" a bit,
+allowing us to see a portion of the
+other side over time.
 ####
 
 400
 Mars
+Mass: 6.419 * 10^23 kg
+            0.1075 Earths
+Radius: 3,396.19 km
+Density: 3.933 g/cm^3
+Rotational Period: 1.026 days
+Orbital Period: 686.98 days
+Avg distance to Sun: 227.9 M km
+Cool Facts: 
 ####
 
 500
 Jupiter
+Mass: 1.899 * 10^27 kg
+            317.93 Earths
+Radius: 71,492 km
+Density: 1.326 g/cm^3
+Rotational Period: 0.4135 days
+Orbital Period: 4,332.82 days
+Avg distance to Sun: 778.4 M km
+Cool Facts: 
 ####
 
 600
 Saturn
+Mass: 5.685 * 10^26 kg
+            95.20 Earths
+Radius: 60,268 km
+Density: 0.687 g/cm^3
+Rotational Period: 0.4440 days
+Orbital Period: 10,759.22 days
+Avg distance to Sun: 1426.7 M km
+Cool Facts: 
+Saturn has less density that other
+gas / ice giants due to increased
+hydrogen and helium composition,
+along with a less dense ice core.
 ####
 
 700
 Uranus
+Mass: 8.685 * 10^25
+            14.54 Earths
+Radius: 25,559 km
+Density: 1.270 g/cm^3
+Rotational Period: 0.7183 days
+Orbital Period: 30,685.40 days
+Avg distance to Sun: 2871.0 M km
+Cool Facts: 
 ####
 
 800
 Neptune
+Mass: 1.024 * 10^26
+            17.15 Earths
+Radius: 24,764 km
+Density: 1.638 g/cm^3
+Rotational Period: 0.6713 days
+Orbital Period: 60,190.03 days
+Avg distance to Sun: 4498.3 M km
+Cool Facts: 
 ####
