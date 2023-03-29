@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 
 [ExecuteInEditMode]
+[RequireComponent(typeof(ReadCelestialFromFile))]
 public class HoverInfoBox : MonoBehaviour
 {
     private enum TextAlignment
@@ -56,6 +57,7 @@ public class HoverInfoBox : MonoBehaviour
     {
         if (textMesh == null)
             return;
+        
         textMesh.text = TextInfo; // Instead, replace textInfo by reading a text document filled with planet info.
         textMesh.GetComponent<RectTransform>().sizeDelta = new Vector2(containerWidth * 100, 1);
         textMesh.transform.localPosition = new Vector3(0, 0, 0.001f);
@@ -93,8 +95,9 @@ public class HoverInfoBox : MonoBehaviour
 
     private void ApplyContainer()
     {
-        if (backplate == null && textMesh == null)
+        if (backplate == null || textMesh == null)
             return;
+        
         int lineCount = GetLineCount(TextInfo);
         float containerHeight = heightPerLine * lineCount + heightPerMargin * (textMesh.margin.y + textMesh.margin.w);
         backplate.localScale = new Vector3(containerWidth, containerHeight, outlineThickness);
@@ -173,11 +176,12 @@ public class HoverInfoBox : MonoBehaviour
         ApplyHover();
     }
 
-    public void SetObjectToHover(Transform transform)
+    public void SetObjectToHover(Transform obj)
     {
-        objectToHover = transform;
+        objectToHover = obj;
         backplate.gameObject.SetActive(true);
         textMesh.gameObject.SetActive(true);
+        SetInfoForObject();
     }
 
     public void ClearObjectToHover()
@@ -185,6 +189,15 @@ public class HoverInfoBox : MonoBehaviour
         objectToHover = null;
         backplate.gameObject.SetActive(false);
         textMesh.gameObject.SetActive(false);
+    }
+
+    public void SetInfoForObject()
+    {
+        ReadCelestialFromFile reader = GetComponent<ReadCelestialFromFile>();
+        if (reader != null)
+        {
+            TextInfo = reader.GetPlanetInfo(objectToHover.name);
+        }
     }
 
 }

@@ -107,7 +107,7 @@ public class ReadCelestialFromFile : MonoBehaviour
     {
         string planetInfoString = "";
         
-        int planetFileIndex = FileIndexOfPlanet(planetName);
+        int planetFileIndex = FileIndexOfPlanet(planetName) + 1;
         var planetInfoAsset = Resources.Load<TextAsset>(PlanetInfoFileName);
         
         string[] planetInfoLines = planetInfoAsset.text.Split('\n');
