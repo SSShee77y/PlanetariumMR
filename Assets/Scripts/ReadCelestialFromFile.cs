@@ -119,7 +119,7 @@ public class ReadCelestialFromFile : MonoBehaviour
             if (currentLine.Contains("#"))
                 break;
             
-            planetInfoString += currentLine;
+            planetInfoString += currentLine + '\n';
         }
 
         return planetInfoString;

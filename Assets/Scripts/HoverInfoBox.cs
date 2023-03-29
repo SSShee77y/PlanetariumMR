@@ -191,6 +191,7 @@ public class HoverInfoBox : MonoBehaviour
         textMesh.gameObject.SetActive(false);
     }
 
+    [ContextMenu("UpdateInfo")]
     public void SetInfoForObject()
     {
         ReadCelestialFromFile reader = GetComponent<ReadCelestialFromFile>();

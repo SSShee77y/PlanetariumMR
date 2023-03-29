@@ -2754,8 +2754,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2766,7 +2766,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 36
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -2859,7 +2859,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 1}
+  m_SizeDelta: {x: 21, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1309338961
 PrefabInstance:
@@ -4248,16 +4248,16 @@ MonoBehaviour:
     \nTemperature: \nCool Facts:\nPlanet rains diamonds\n"
   textAlignment: 1
   backplate: {fileID: 5505537922445783448}
-  heightPerLine: 0.015
+  heightPerLine: 0.0165
   heightPerMargin: 0.008
-  containerWidth: 0.2
+  containerWidth: 0.21
   outlineThickness: 0.01
   objectToHover: {fileID: 0}
   faceCamera: 1
   hoverSide: 1
-  hoverGap: 0.1
+  hoverGap: 0.11
   addObjectScaleForGap: 1
-  hoverFront: 0.1
+  hoverFront: 0.12
 --- !u!114 &1949213592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4552,7 +4552,7 @@ Transform:
   m_GameObject: {fileID: 5505537922445783455}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.151, z: 0.01}
+  m_LocalScale: {x: 0.21, y: 0.1645, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1949213588}

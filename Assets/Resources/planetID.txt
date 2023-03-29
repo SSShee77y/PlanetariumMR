@@ -1,8 +1,10 @@
 # ID: Name
+# Make sure IDs are in numerical order
 10: Sun
 100: Mercury
 200: Venus
 300: Earth
+301: The Moon
 400: Mars
 500: Jupiter
 600: Saturn
