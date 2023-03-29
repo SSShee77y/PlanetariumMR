@@ -1,0 +1,61 @@
+# ID
+# Name
+# Mass
+# Radius
+# Density
+# Rotational Period
+# Orbital Period
+# Avg Distance To Primary
+# Cool Facts
+# (# Comments are read as end lines)
+
+# File reading only works when ID values are in order
+
+10
+Sun
+Mass: 
+Radius: 
+Density: 
+Rotation Period: 
+Cool Facts:
+Planet rains diamonds
+####
+
+100
+Mercury
+Mass: 
+Radius: 
+Density: 
+Rotational Period: 
+Orbital Period: 
+Avg Distance To Primary: 
+Cool Facts: 
+####
+
+200
+Venus
+####
+
+300
+Earth
+####
+
+400
+Mars
+####
+
+500
+Jupiter
+####
+
+600
+Saturn
+####
+
+700
+Uranus
+####
+
+800
+Neptune
+####
