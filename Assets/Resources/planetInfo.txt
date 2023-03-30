@@ -20,12 +20,12 @@ Rotation Period: 25.3800
 Orbital Period: 230 M yr
 Avg distance to Primary: 28,000 ly
 ------
-Contains 99.86% of the mass of the
-Solar System. The yellow color of
-the sun is related to its heat.
-The temperature determines the
-color, with cooler being darker
-and redder, and hotter meaning
+The Sun contains 99.86% of the
+mass of the Solar System.
+The yellow color of the Sun is
+related to its temperature, with
+cooler stars being darker and
+redder, and hotter stars being
 brighter and bluer.
 ####
 
@@ -56,9 +56,8 @@ Rotational Period: 243.019 days
 Orbital Period: 224.70 days
 Avg distance to Sun: 108.2 M km
 ------
-Venus has an atmosphere of CO2 and
-sulfuric acid. Due to this thick
-atmosphere, it is the hottest
+Due to its thick atmosphere of CO2
+and sulfuric acid, it is the hottest
 planet in the solar system.
 It also spins in retrograde.
 ####
@@ -73,10 +72,9 @@ Orbital Period: 365.25 days
 Avg distance to Sun: 149.6 M km
 ------
 The Earth's atmosphere and
-magnetic field protect us from
-the dangers of the sun.
-It is the only planet known to
-host life so far...
+magnetic field protect us from the
+dangers of the sun. It is the only
+planet known to host life so far...
 ####
 
 301
@@ -108,8 +106,8 @@ Orbital Period: 686.98 days
 Avg distance to Sun: 227.9 M km
 ------
 Has the largest volcano in the
-solar system, Olympus Mons, which
-is 3x taller than Mt Everest.
+solar system, Olympus Mons,
+being 3x taller than Mt Everest.
 The planet also contains the
 biggest canyon, Valles Marineris.
 ####
@@ -177,7 +175,9 @@ Orbital Period: 60,190.03 days
 Avg distance to Sun: 4498.3 M km
 ------
 As an ice giant like Uranus, it
-contains mostly water, ammonia, and
+contains mostly water, ammonia, &
 methane, unlike the gas giants with
 mostly helium and hydrogen.
 ####
+
+#### End

@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 
 [ExecuteInEditMode]
-[RequireComponent(typeof(ReadCelestialFromFile))]
 public class HoverInfoBox : MonoBehaviour
 {
     private enum TextAlignment
@@ -162,7 +161,7 @@ public class HoverInfoBox : MonoBehaviour
 
     private void Update()
     {
-        if (Application.isPlaying && objectToHover == null)
+        if (Application.isPlaying && (objectToHover == null || objectToHover.gameObject.activeInHierarchy == false))
         {
             backplate.gameObject.SetActive(false);
             textMesh.gameObject.SetActive(false);
