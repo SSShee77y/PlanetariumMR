@@ -231,6 +231,7 @@ public class Gravitation : MonoBehaviour
         // Will always go Counter-Clockwise (Else just do -= in velocity)
         Quaternion previousRotation = bodyToCalculate.transform.rotation;
         bodyToCalculate.transform.LookAt(bodyAffecting.transform);
+        bodyToCalculate.transform.Rotate(0f, 0f, bodyToCalculate.GetComponent<CelestialInfo>().inclination);
         bodyToCalculate.GetComponent<Rigidbody>().velocity += bodyToCalculate.transform.right * speed; 
         bodyToCalculate.transform.rotation = previousRotation;
     }

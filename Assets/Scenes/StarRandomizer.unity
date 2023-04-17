@@ -546,7 +546,7 @@ PrefabInstance:
     - target: {fileID: 1909545311325705493, guid: 7166b9da00ed8094dadf502c985175d6, type: 3}
       propertyPath: orbitalPrimary
       value: 
-      objectReference: {fileID: 910438684}
+      objectReference: {fileID: 0}
     - target: {fileID: 1909545311325705494, guid: 7166b9da00ed8094dadf502c985175d6, type: 3}
       propertyPath: m_Name
       value: Mars
@@ -812,7 +812,7 @@ PrefabInstance:
     - target: {fileID: 3932016687631453831, guid: f27a7359a55610c43bfbeb913074f9fe, type: 3}
       propertyPath: orbitalPrimary
       value: 
-      objectReference: {fileID: 910438684}
+      objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453832, guid: f27a7359a55610c43bfbeb913074f9fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -847,6 +847,82 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f27a7359a55610c43bfbeb913074f9fe, type: 3}
+--- !u!1 &434328785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 434328788}
+  - component: {fileID: 434328787}
+  - component: {fileID: 434328786}
+  m_Layer: 5
+  m_Name: Fader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &434328786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434328785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.15, g: 0.132, b: 0.1365, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &434328787
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434328785}
+  m_CullTransparentMesh: 1
+--- !u!224 &434328788
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434328785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1470423477}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2160, y: 1404}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &493632449
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -912,7 +988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453831, guid: a54e5c6a4cfb9154b82fcd676e04b0b2, type: 3}
       propertyPath: radius
-      value: 30
+      value: 30.134
       objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453831, guid: a54e5c6a4cfb9154b82fcd676e04b0b2, type: 3}
       propertyPath: orbitalPrimary
@@ -1139,7 +1215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453831, guid: 524769594e42cf84998cc70aed70f7e4, type: 3}
       propertyPath: radius
-      value: 0.071492
+      value: 35.746
       objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453831, guid: 524769594e42cf84998cc70aed70f7e4, type: 3}
       propertyPath: orbitalPrimary
@@ -1248,7 +1324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453831, guid: cfbf1ff17af824e449d8a96d09d5a514, type: 3}
       propertyPath: radius
-      value: 0.024764
+      value: 12.382
       objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453831, guid: cfbf1ff17af824e449d8a96d09d5a514, type: 3}
       propertyPath: orbitalPrimary
@@ -1346,7 +1422,7 @@ MonoBehaviour:
   smoothing: 1
   lifetime: 0
   orientationType: 0
-  localOffset: {x: 0.15, y: -0.1, z: 0.25}
+  localOffset: {x: 0.15, y: -0.1, z: 0.51}
   worldOffset: {x: 0, y: 0, z: 0}
   useAngleStepping: 0
   tetherAngleSteps: 6
@@ -1406,7 +1482,7 @@ Transform:
   - {fileID: 913680369}
   - {fileID: 787872414}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784032294 stripped
 GameObject:
@@ -1626,7 +1702,7 @@ Transform:
   - {fileID: 1884773065}
   - {fileID: 629381526}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &910438683
 PrefabInstance:
@@ -1661,7 +1737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 674660398925308100, guid: 45c3ce339a2529a48bd9cc4a9dda0988, type: 3}
       propertyPath: radius
-      value: 1
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 674660398925308103, guid: 45c3ce339a2529a48bd9cc4a9dda0988, type: 3}
       propertyPath: m_RootOrder
@@ -2015,7 +2091,7 @@ PrefabInstance:
     - target: {fileID: 6486189664130240902, guid: 399939e904087fc4aae4a183137f35df, type: 3}
       propertyPath: orbitalPrimary
       value: 
-      objectReference: {fileID: 910438684}
+      objectReference: {fileID: 0}
     - target: {fileID: 6486189664130240903, guid: 399939e904087fc4aae4a183137f35df, type: 3}
       propertyPath: m_Drag
       value: 2
@@ -2250,7 +2326,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1909545311325705493, guid: 7166b9da00ed8094dadf502c985175d6, type: 3}
       propertyPath: radius
-      value: 0.003396
+      value: 6.792
       objectReference: {fileID: 0}
     - target: {fileID: 1909545311325705493, guid: 7166b9da00ed8094dadf502c985175d6, type: 3}
       propertyPath: orbitalPrimary
@@ -2456,7 +2532,7 @@ PrefabInstance:
     - target: {fileID: 3031140081998927807, guid: fe80e8ef85eecc14f95e5a3afca93dff, type: 3}
       propertyPath: orbitalPrimary
       value: 
-      objectReference: {fileID: 910438684}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe80e8ef85eecc14f95e5a3afca93dff, type: 3}
 --- !u!1 &1112179302 stripped
@@ -2618,7 +2694,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1112823922
 MonoBehaviour:
@@ -2632,7 +2708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37c9577bc430d9469dd8bea93a7f7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentOfObjectsToHide: {fileID: 745036950}
+  parentOfObjectsToHide: {fileID: 0}
   planetsToHide: []
 --- !u!1 &1211422780
 GameObject:
@@ -2690,20 +2766,20 @@ MonoBehaviour:
 
     ------
 
-    The Sun contains 99.86% of
-    the
+    The Sun contains 99.86% of the
 
-    mass of the Solar System.
+    mass
+    of the Solar System.
 
     The yellow color of the Sun is
 
-    related
-    to its temperature, with
+    related to its
+    temperature, with
 
     cooler stars being darker and
 
-    redder, and
-    hotter stars being
+    redder, and hotter
+    stars being
 
     brighter and bluer.
 
@@ -3248,7 +3324,7 @@ Transform:
   - {fileID: 880818250}
   - {fileID: 532055582}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1364084636
 MonoBehaviour:
@@ -3450,7 +3526,7 @@ PrefabInstance:
     - target: {fileID: 3932016687631453831, guid: a54e5c6a4cfb9154b82fcd676e04b0b2, type: 3}
       propertyPath: orbitalPrimary
       value: 
-      objectReference: {fileID: 910438684}
+      objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453832, guid: a54e5c6a4cfb9154b82fcd676e04b0b2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3585,6 +3661,171 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoConstraintSelection: 1
   selectedConstraints: []
+--- !u!1 &1470423470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1470423477}
+  - component: {fileID: 1470423476}
+  - component: {fileID: 1470423475}
+  - component: {fileID: 1470423474}
+  - component: {fileID: 1470423473}
+  - component: {fileID: 1470423472}
+  - component: {fileID: 1470423471}
+  m_Layer: 5
+  m_Name: FadeInCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1470423471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470423470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c3d8a4208d4b649529822e217623d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateLinkedTransform: 0
+  moveLerpTime: 0
+  rotateLerpTime: 0
+  scaleLerpTime: 0
+  maintainScaleOnInitialization: 1
+  smoothing: 1
+  lifetime: 0
+  orientationType: 5
+  localOffset: {x: 0, y: 0, z: 0.102}
+  worldOffset: {x: 0, y: 0, z: 0}
+  useAngleStepping: 0
+  tetherAngleSteps: 6
+--- !u!114 &1470423472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470423470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b55691ad5b034fe6966763a6e23818d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackedTargetType: 0
+  trackedHandedness: 3
+  trackedHandJoint: 2
+  transformOverride: {fileID: 0}
+  additionalOffset: {x: 0, y: 0, z: 0}
+  additionalRotation: {x: 0, y: 0, z: 0}
+  updateSolvers: 1
+--- !u!114 &1470423473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470423470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c55d5bd8b6070b04e9bbcf65160fb10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeImage: {fileID: 434328786}
+  TimeToStart: 0.8
+  FadeInTime: 1
+  SplashScreenTime: 0
+  FadeOutTime: 0
+  SceneNameToLoadInto: 
+--- !u!114 &1470423474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470423470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1470423475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470423470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1440, y: 936}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &1470423476
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470423470}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1470423477
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470423470}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 434328788}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1440, y: 936}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1492121074
 GameObject:
   m_ObjectHideFlags: 0
@@ -3629,7 +3870,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1533418076
 PrefabInstance:
@@ -4315,20 +4556,20 @@ MonoBehaviour:
 
     ------
 
-    The Sun contains 99.86% of
-    the
+    The Sun contains 99.86% of the
 
-    mass of the Solar System.
+    mass
+    of the Solar System.
 
     The yellow color of the Sun is
 
-    related
-    to its temperature, with
+    related to its
+    temperature, with
 
     cooler stars being darker and
 
-    redder, and
-    hotter stars being
+    redder, and hotter
+    stars being
 
     brighter and bluer.
 
@@ -4360,7 +4601,7 @@ Transform:
   - {fileID: 2100318503}
   - {fileID: 1211422783}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1947204000
 PrefabInstance:
@@ -4605,7 +4846,7 @@ Transform:
   - {fileID: 5505537922445783448}
   - {fileID: 1248879585}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1949213591
 MonoBehaviour:
@@ -4718,7 +4959,7 @@ PrefabInstance:
     - target: {fileID: 3932016687631453831, guid: cfbf1ff17af824e449d8a96d09d5a514, type: 3}
       propertyPath: orbitalPrimary
       value: 
-      objectReference: {fileID: 910438684}
+      objectReference: {fileID: 0}
     - target: {fileID: 3932016687631453832, guid: cfbf1ff17af824e449d8a96d09d5a514, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
