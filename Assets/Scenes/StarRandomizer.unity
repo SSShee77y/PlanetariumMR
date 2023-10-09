@@ -3953,7 +3953,7 @@ PrefabInstance:
       objectReference: {fileID: 1741348687}
     - target: {fileID: 8812427449987554559, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: CleanUpRandomizer
+      value: ReloadScene
       objectReference: {fileID: 0}
     - target: {fileID: 8812427449987554559, guid: e1e3746d5067a614683084937319e0ba, type: 3}
       propertyPath: ButtonPressed.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
