@@ -11,7 +11,7 @@ public class LightingScaler : MonoBehaviour
     private float baseScale;
     [SerializeField]
     private Transform system;
-
+    
     void Update()
     {
         if (GetComponent<Light>() != null)
