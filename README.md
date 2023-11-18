@@ -11,9 +11,9 @@ planets are back in the right place in the solar system, the player can sit back
 
 ## Images
 
-<img src="ReadmeResources/title_image.jpg" width="97.5%">
-<img src="ReadmeResources/earth_info.jpg" width="49%">
-<img src="ReadmeResources/floating_planets.jpg" width="48%">
+<img src="ReadmeImages/title_image.jpg" width="97.5%">
+<img src="ReadmeImages/earth_info.jpg" width="49%">
+<img src="ReadmeImages/floating_planets.jpg" width="48%">
 
 ## Sources
 
