@@ -2708,7 +2708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c37c9577bc430d9469dd8bea93a7f7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentOfObjectsToHide: {fileID: 0}
+  parentOfObjectsToHide: {fileID: 745036950}
   planetsToHide: []
 --- !u!1 &1211422780
 GameObject:
